@@ -1,21 +1,26 @@
-
-|R4|
+|SDC .NET API|
 |---|
 
 ## Introduction ##
 
-This is an unofficial WebAPI controller implementation for exposing a [HL7 FHIR][fhir-spec] on the Microsoft .NET (dotnet) platform.
-It even supports data compression handling out of the box
+This is a [HL7 FHIR Structured Data Capture (SDC)][sdc-spec] reference implementation for the Microsoft .NET (dotnet) platform.
 
 This library provides:
 
-* An implementation of an ApiController for the R4 FHIR specification
-* An interface for the System Service
-* An interface for the Resource Service
-* A partial example implementation of a fhir server CRUD that just writes files to C:\Temp\demoserver
-* A unit test project that utilizes the FhirClient NuGet packages to test the example Service
-* Support for both Owin (.NET 4.7+) and AspNetCore
-* An extra FhirHttpClient assembly that is a partial drop in replacement for the v1.9.0 FhirClient class that uses the HttpClient internally for use in Azure Function Apps and other locations where high load causes issues with socket exhaustion
+* Reference implementations for FHIR Structured Data Capture capabilities across multiple FHIR versions (R4, R4B, R5)
+* QuestionnaireResponse validation against Questionnaire definitions
+* Extract operations to convert QuestionnaireResponse data into other FHIR resources (Observation-based, Definition-based, and StructureMap-based extraction)
+* Questionnaire validation capabilities
+* Support for SDC extensions and advanced questionnaire features
+* Azure Function demonstration for SDC extract operations
+* Comprehensive unit test suite
+
+The library supports multiple .NET target frameworks:
+
+* .NET 8.0
+* .NET Framework 4.6.2
+* .NET Standard 2.1
+* .NET Standard 2.0
 
 The library depends on several NuGet packages (notably):
 
@@ -23,55 +28,63 @@ The library depends on several NuGet packages (notably):
 * *Specification* (NuGet packages starting with `Hl7.Fhir.Specification.<version>`) - functionality to work with the specification metadata and validation
 * *FhirPath* (NuGet package `Hl7.FhirPath`) - the FhirPath evaluator, used by the Core and Specification assemblies
 * *Support* (NuGet package `Hl7.Fhir.Support`) - a library with interfaces, abstractions and utility methods that are used by the other packages
-* *Owin*
 
 **IMPORTANT**
-Once things settle in, the HL7.Fhir.WebApi.R4 project will be created into a NuGet package.
+This library provides NuGet packages for FHIR Structured Data Capture functionality.
 Before installing one of the NuGet packages (or clone the repo) it is important to understand that HL7 has published several updates of the FHIR specification,
 each with breaking changes - so you need to ensure you use the version that is right for you:
 
-* [R4][r4-spec] (published December 2019) latest release, support by this library.
-* [STU3][stu3-spec] (published March 2017) increasing use, supported by this library - though not published as yet, and may not publish
-* [DSTU2][dstu2-spec] (published October 2015) in widespread use, not planning to supported by this library.
+* [R5][r5-spec] (published March 2023) latest release, supported by this library
+* [R4B][r4b-spec] (published May 2022) interim release, supported by this library
+* [R4][r4-spec] (published October 2019) widely adopted, supported by this library
+
+## Projects in this Solution ##
+
+### Core SDC Libraries ###
+* **Hl7.Fhir.R4.StructuredDataCapture** - R4 implementation of SDC capabilities
+* **Hl7.Fhir.R4B.StructuredDataCapture** - R4B implementation of SDC capabilities  
+* **Hl7.Fhir.R5.StructuredDataCapture** - R5 implementation of SDC capabilities
+
+### Testing ###
+* **Test.Hl7.Fhir.StructuredDataCapture** - Comprehensive unit test suite
+
+### Demo Applications ###
+* **Hl7.DemoSDCExtractOperation** - Azure Function demonstration showing how to use the SDC extract capabilities
 
 ## Getting Started ##
 
-To create your own server, copy the Hl7.DemoFileSystemFhirServer example project, then start replacing the code in the
-DirectorySystemService and DirectoryResourceService classes.
-Depending on your implementation needs, you may have one or more Resource classes.
+To use the SDC libraries in your project, install the appropriate NuGet package for your FHIR version:
 
-(Choose either the Owin if you have a .net 4.7+ project, or the aspnetcore project if using netcore 2.2, 3.0 or 3.1)
+```
+dotnet add package brianpos.Fhir.R4.StructuredDataCapture
+```
+
+Then you can perform operations like QuestionnaireResponse extraction:
+
+```csharp
+var extractor = new QuestionnaireResponseExtract();
+var result = await extractor.PerformExtractOperation(questionnaireResponse, questionnaire);
+```
+
 
 ## Support ##
-TBD
+
 For questions and broader discussions, we use the .NET FHIR Implementers chat on [Zulip][netapi-zulip].
 
 ## Contributing ##
 
 We are welcoming contributors!
 
-If you want to participate in this project, we're using [Git Flow][nvie] for our branch management, so please submit your commits using pull requests no on the develop branches mentioned above!
+If you want to participate in this project, we're using [Git Flow][nvie] for our branch management, so please submit your commits using pull requests on the develop branches mentioned above!
 
 ### GIT branching strategy ###
 
 - [NVIE](http://nvie.com/posts/a-successful-git-branching-model/)
 - Or see: [Git workflow](https://www.atlassian.com/git/workflows#!workflow-gitflow)
 
-[netapi-docu]: http://ewoutkramer.github.io/fhir-net-api/docu-index.html
 [netapi-zulip]: https://chat.fhir.org/#narrow/stream/dotnet
-[fhir-spec]: http://www.hl7.org/fhir
+[sdc-spec]: http://hl7.org/fhir/uv/sdc/
+[r5-spec]: http://www.hl7.org/fhir/r5
+[r4b-spec]: http://www.hl7.org/fhir/r4b
 [r4-spec]: http://www.hl7.org/fhir/r4
-[stu3-spec]: http://www.hl7.org/fhir/stu3
-[dstu2-spec]: http://www.hl7.org/fhir/dstu2
-[fhirpath-spec]: http://hl7.org/fhirpath/
-
-### History ###
-This code in this project started life inside the Spark FHIR Server prior to the DSTU2 release.
-
-At which point the Spark server only supported Mongo, and I needed SQL Server, so I forked the code
-and built a SQL version (which was closed source for the company I worked for).
-Over time the layer that implemented the API Facade was split into it's own package, and that is
-this code (no storage, just the Controller, Formatters, and plumbing for the base server)
-
-Since then a lot of work has gone into maintaining this project, and refining it for the various
-versions of FHIR, and the dotnet framework.
+[nvie]: http://nvie.com/posts/a-successful-git-branching-model/
