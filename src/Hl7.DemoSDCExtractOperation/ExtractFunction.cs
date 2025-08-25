@@ -4,7 +4,6 @@
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.StructuredDataCapture;
-using Hl7.Fhir.WebApi;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +15,14 @@ namespace Hl7.DemoFhirAzureFunctionApp
 {
     public class StructuredDataCaptureFunctions
     {
+        public static Resource GetResource(Parameters me, string name)
+        {
+            var value = me.Parameter.Where(s => s.Name == name).FirstOrDefault();
+            if (value == null)
+                return null;
+            return value.Resource;
+        }
+        
         [Function("extract-post")]
         public static async Task<HttpResponseData> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "$extract")] HttpRequestData req,
             FunctionContext context,
@@ -24,8 +31,7 @@ namespace Hl7.DemoFhirAzureFunctionApp
         {
             var logger = context.GetLogger<StructuredDataCaptureFunctions>();
             FhirClient client = context.InstanceServices.GetService<FhirClient>();
-
-            var qr = resource.GetResource("questionnaire-response") as QuestionnaireResponse;
+            var qr = GetResource(resource, "questionnaire-response") as QuestionnaireResponse;
 
             if (qr != null)
             {

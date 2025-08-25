@@ -4,7 +4,6 @@
 using Hl7.Fhir.Model;
 using Hl7.Fhir.Rest;
 using Hl7.Fhir.Serialization;
-using Hl7.Fhir.WebApi;
 using Microsoft.Azure.Functions.Worker.Http;
 using System.IO;
 using System.Linq;

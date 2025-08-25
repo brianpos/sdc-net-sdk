@@ -1,0 +1,68 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.10923.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5CE27248-3050-4DA7-967A-A8CD757BBAF5}"
+	ProjectSection(SolutionItems) = preProject
+		..\contributors.md = ..\contributors.md
+		fhir-net-web-api.props = fhir-net-web-api.props
+		..\LICENSE = ..\LICENSE
+		platforms.props = platforms.props
+		..\pull_request_template.md = ..\pull_request_template.md
+		..\readme.md = ..\readme.md
+		sdc-version.props = sdc-version.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Hl7.Fhir.StructuredDataCapture", "Test.Hl7.Fhir.StructuredDataCapture\Test.Hl7.Fhir.StructuredDataCapture.csproj", "{476FF6CE-682E-401A-BFD5-6DE000504AD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.DemoSDCExtractOperation", "Hl7.DemoSDCExtractOperation\Hl7.DemoSDCExtractOperation.csproj", "{78DBB9D6-9E23-47AD-B60B-2FB849253765}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.Fhir.R4.StructuredDataCapture", "Hl7.Fhir.R4.StructuredDataCapture\Hl7.Fhir.R4.StructuredDataCapture.csproj", "{7AC11A42-17AA-4FD7-9B30-C0C759412429}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.Fhir.R5.StructuredDataCapture", "Hl7.Fhir.R5.StructuredDataCapture\Hl7.Fhir.R5.StructuredDataCapture.csproj", "{7D91EDD9-CEF9-4B67-9623-98C9146046BD}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Hl7.Fhir.StructuredDataCapture", "Hl7.Fhir.StructuredDataCapture\Hl7.Fhir.StructuredDataCapture.shproj", "{8C2BE087-2FC3-4551-85F6-74B04F780E42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.Fhir.R4B.StructuredDataCapture", "Hl7.Fhir.R4B.StructuredDataCapture\Hl7.Fhir.R4B.StructuredDataCapture.csproj", "{B5E31670-46BB-4474-BD29-C3B454CB3E7A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{476FF6CE-682E-401A-BFD5-6DE000504AD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476FF6CE-682E-401A-BFD5-6DE000504AD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476FF6CE-682E-401A-BFD5-6DE000504AD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476FF6CE-682E-401A-BFD5-6DE000504AD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78DBB9D6-9E23-47AD-B60B-2FB849253765}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78DBB9D6-9E23-47AD-B60B-2FB849253765}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78DBB9D6-9E23-47AD-B60B-2FB849253765}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78DBB9D6-9E23-47AD-B60B-2FB849253765}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC11A42-17AA-4FD7-9B30-C0C759412429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC11A42-17AA-4FD7-9B30-C0C759412429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC11A42-17AA-4FD7-9B30-C0C759412429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC11A42-17AA-4FD7-9B30-C0C759412429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D91EDD9-CEF9-4B67-9623-98C9146046BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D91EDD9-CEF9-4B67-9623-98C9146046BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D91EDD9-CEF9-4B67-9623-98C9146046BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D91EDD9-CEF9-4B67-9623-98C9146046BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E31670-46BB-4474-BD29-C3B454CB3E7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E31670-46BB-4474-BD29-C3B454CB3E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E31670-46BB-4474-BD29-C3B454CB3E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E31670-46BB-4474-BD29-C3B454CB3E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1474921-5D08-49DD-81D2-E85293369801}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Hl7.Fhir.StructuredDataCapture\Hl7.Fhir.StructuredDataCapture.projitems*{7ac11a42-17aa-4fd7-9b30-c0c759412429}*SharedItemsImports = 5
+		Hl7.Fhir.StructuredDataCapture\Hl7.Fhir.StructuredDataCapture.projitems*{7d91edd9-cef9-4b67-9623-98c9146046bd}*SharedItemsImports = 5
+		Hl7.Fhir.StructuredDataCapture\Hl7.Fhir.StructuredDataCapture.projitems*{8c2be087-2fc3-4551-85f6-74b04f780e42}*SharedItemsImports = 13
+		Hl7.Fhir.StructuredDataCapture\Hl7.Fhir.StructuredDataCapture.projitems*{b5e31670-46bb-4474-bd29-c3b454cb3e7a}*SharedItemsImports = 5
+	EndGlobalSection
+EndGlobal
