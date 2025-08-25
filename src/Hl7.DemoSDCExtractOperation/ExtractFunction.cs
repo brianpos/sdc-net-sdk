@@ -90,9 +90,11 @@ namespace Hl7.DemoFhirAzureFunctionApp
 
             // According to the canonical URL resolving version rules!
             var qVers = b.Entry.Where(e => (e.Resource as Questionnaire)?.Url == canonical.Url.Value).Select(e => e.Resource).Cast<IVersionableConformanceResource>();
-            return CurrentCanonical.Current(qVers) as Questionnaire;
+			// return CurrentCanonical.Current(qVers) as Questionnaire;
+			// don't have the current canonical function here, so just return the highest version
+			return qVers.OrderByDescending(q => q.Version).FirstOrDefault() as Questionnaire;
 
-            // or this could also call the $current-canonical which is defined for R5
-        }
+			// or this could also call the $current-canonical which is defined for R5
+		}
     }
 }
