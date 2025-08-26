@@ -1,0 +1,76 @@
+﻿{
+  "resourceType": "QuestionnaireResponse",
+  "status": "in-progress",
+  "item": [
+    {
+      "linkId": "myBP",
+      "text": "BP using integer & unit",
+      "item": [
+        {
+          "linkId": "myBP.systolic",
+          "text": "systolic",
+          "item": [
+            {
+              "linkId": "myBP.systolic.unit",
+              "text": "unit",
+              "answer": [
+                {
+                  "valueString": "mg"
+                }
+              ]
+            },
+            {
+              "linkId": "myBP.systolic.code",
+              "text": "code",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "http://loinc.org",
+                    "code": "8480-6",
+                    "display": "Systolic Blood Pressure"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "myBP.systolic.value",
+              "text": "value",
+              "answer": [
+                {
+                  "valueDecimal": 45
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "myBP.diastolic",
+          "text": "diastolic",
+          "item": [
+            {
+              "linkId": "myBP.diastolic.code1",
+              "text": "code1",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "http://loinc.org",
+                    "code": "8462-4",
+                    "display": "Diastolic"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "questionnaire": "http://canshare.co.nz/questionnaire/myBP",
+  "meta": {
+    "tag": [
+      {
+        "code": "csiro:generated"
+      }
+    ]
+  }
+}

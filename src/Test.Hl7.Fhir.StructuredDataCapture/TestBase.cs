@@ -126,6 +126,16 @@ namespace Hl7.Fhir.StructuredDataCapture.Test
 			}
 		}
 
+		public static void DebugDumpJson(Base item)
+		{
+			if (item == null)
+				Trace.WriteLine("(null)");
+			else
+			{
+				Trace.WriteLine(new FhirJsonSerializer(new SerializerSettings() { Pretty = true }).SerializeToString(item));
+			}
+		}
+
 		private static string KebabCaseFromPascalCaseInLowercase(string input)
 		{
 			if (string.IsNullOrEmpty(input))

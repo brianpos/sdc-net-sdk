@@ -21,8 +21,8 @@ namespace Hl7.Fhir.StructuredDataCapture.Test
             Hl7.Fhir.FhirPath.ElementNavFhirExtensions.PrepareFhirSymbolTableFunctions();
         }
 
-        protected Firely.Fhir.Validation.Validator _validator;
-        private IAsyncResourceResolver AsyncSource;
+        protected static Firely.Fhir.Validation.Validator _validator;
+        private static IAsyncResourceResolver AsyncSource;
         private void ValidateQuestionnaire(Questionnaire q, OperationOutcome outcome)
         {
             if (AsyncSource == null)

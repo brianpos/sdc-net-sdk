@@ -1,4 +1,5 @@
 ﻿using Hl7.Fhir.Model;
+using Hl7.Fhir.Specification.Source;
 using Hl7.Fhir.Support;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Hl7.Fhir.StructuredDataCapture
     /// </summary>
     public class QuestionnaireResponseExtract
     {
-        public Task<Resource> PerformExtractOperation(QuestionnaireResponse qr, Questionnaire q)
+        public async Task<Resource> PerformExtractOperation(Func<Canonical, StructureMap> resolveStructureMap, IResourceResolver source, QuestionnaireResponse qr, Questionnaire q)
         {
             OperationOutcome outcome = new OperationOutcome();
             Bundle results = new Bundle();
@@ -28,29 +29,40 @@ namespace Hl7.Fhir.StructuredDataCapture
                 ExtractItemObservationData(qr, results, outcome, itemDef, itemsA, extractAllItems, defaultObservationExtractCategory);
             }
 
-            // Definition based extraction
-            // ...
+			// Definition based extraction
+			var definitionExtractor = new QuestionnaireResponse_Extract_Definition(source);
+			var definitionResourcesExtracted = await definitionExtractor.Extract(q, qr, outcome);
+			if (definitionResourcesExtracted != null)
+				results.Entry.AddRange(definitionResourcesExtracted);
 
-            // StructureMap based extraction
-            foreach (var sm in q.TargetStructureMap())
-            {
-                // retrieve the StructureMap
-
-                // execute the StructureMap extraction
-
-                // Add the results into the output
-            }
+			// Template based extraction
+			var templateExtractor = new QuestionnaireResponse_Extract_Template();
+			var templateResourcesExtracted = await templateExtractor.Extract(q, qr, outcome);
+			if (templateResourcesExtracted != null)
+				results.Entry.AddRange(templateResourcesExtracted);
 
 
-            // If there are any issues, then we should return the parameters resource instead of the Bundle itself
-            if (outcome.Issue.Any())
+			// StructureMap based extraction
+			if (q.TargetStructureMap().Any())
+			{
+				var sme = new QuestionnaireResponse_Extract_StructureMap(resolveStructureMap, source);
+				foreach (var sm in q.TargetStructureMap())
+				{
+					IEnumerable<Bundle.EntryComponent> smResults = await sme.Extract(sm, qr, outcome);
+					if (smResults != null)
+						results.Entry.AddRange(smResults);
+				}
+			}
+
+			// If there are any issues, then we should return the parameters resource instead of the Bundle itself
+			if (outcome.Issue.Any())
             {
                 Parameters resultParameters = new Parameters();
                 resultParameters.Parameter.Add(new Parameters.ParameterComponent() { Name = "return", Resource = results });
                 resultParameters.Parameter.Add(new Parameters.ParameterComponent() { Name = "issues", Resource = outcome });
-                return Task.FromResult(resultParameters as Resource);
+                return resultParameters as Resource;
             }
-            return Task.FromResult(results as Resource);
+            return results as Resource;
         }
 
         private void ExtractItemObservationData(QuestionnaireResponse qr, Bundle results, OperationOutcome outcome, Questionnaire.ItemComponent itemDef, IEnumerable<QuestionnaireResponse.ItemComponent> itemsA, bool extractAllItems, IEnumerable<CodeableConcept> defaultObservationExtractCategory)

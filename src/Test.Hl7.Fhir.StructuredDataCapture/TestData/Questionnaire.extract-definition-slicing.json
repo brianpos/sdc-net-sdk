@@ -1,0 +1,147 @@
+﻿{
+  "resourceType": "Questionnaire",
+  "id": "prac-ext-demo",
+  "meta": {
+    "versionId": "6",
+    "lastUpdated": "2024-09-18T06:54:07.7097505+00:00"
+  },
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+      "valueCanonical": "http://healthconnex.com.au/hcxd/Practitioner"
+    }
+  ],
+  "url": "https://fhir.telstrahealth.com/fastforms/Questionnaire/prac-ext-demo",
+  "title": "Practitioner details entry (extended): Definition based Data extraction demo",
+  "status": "active",
+  "publisher": "DEMO: Brian Postltethwaite",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "user",
+        "display": "User Type"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "code": "extract",
+            "display": "Demo Extract"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "core-props",
+      "type": "group",
+      "repeats": false,
+      "item": [
+        {
+          "linkId": "Practitioner.active",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.active",
+          "text": "Active",
+          "type": "boolean"
+        },
+        {
+          "linkId": "Practitioner.gender",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.gender",
+          "text": "Gender",
+          "type": "choice",
+          "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+        },
+        {
+          "linkId": "Practitioner.birthDate",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.birthDate",
+          "text": "Birth Date",
+          "type": "date"
+        },
+        {
+          "linkId": "Practitioner.name.text",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.name.text",
+          "text": "Name",
+          "type": "string"
+        },
+        {
+          "linkId": "Practitioner.extension:appointmentRequired.value[x]",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.extension:appointmentRequired.valueString",
+          "text": "Appointment Required",
+          "type": "string"
+        },
+        {
+          "linkId": "Practitioner.telecom:website.value",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.telecom:website.value",
+          "text": "Website",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "linkId": "Practitioner.qualification",
+      "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification",
+      "text": "Qualifications",
+      "type": "group",
+      "repeats": true,
+      "item": [
+        {
+          "linkId": "Practitioner.qualification.code.coding.code",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification.code.coding.code",
+          "text": "Code",
+          "type": "string"
+        },
+        {
+          "linkId": "Practitioner.qualification.code.coding.display",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification.code.coding.display",
+          "text": "Display",
+          "type": "string"
+        },
+        {
+          "linkId": "Practitioner.qualification.period.end",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification.period.end",
+          "text": "Completion Year",
+          "type": "dateTime"
+        },
+        {
+          "linkId": "Practitioner.qualification.issuer.display",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification.issuer.display",
+          "text": "Issued by",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "linkId": "Practitioner.qualification:certificate3-community",
+      "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification:certificate3-community",
+      "text": "Qualifications - Community cert 3",
+      "type": "group",
+      "repeats": false,
+      "item": [
+        {
+          "linkId": "Practitioner.qualification:certificate3-community.code.coding.code",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification:certificate3-community.code.coding.code",
+          "text": "Code",
+          "type": "string"
+        },
+        {
+          "linkId": "Practitioner.qualification:certificate3-community.code.coding.display",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification:certificate3-community.code.coding.display",
+          "text": "Display",
+          "type": "string"
+        },
+        {
+          "linkId": "Practitioner.qualification:certificate3-community.period.end",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification:certificate3-community.period.end",
+          "text": "Completion Year",
+          "type": "dateTime"
+        },
+        {
+          "linkId": "Practitioner.qualification:certificate3-community.issuer.display",
+          "definition": "http://healthconnex.com.au/hcxd/Practitioner#Practitioner.qualification:certificate3-community.issuer.display",
+          "text": "Issued by",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

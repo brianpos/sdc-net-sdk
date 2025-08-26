@@ -1,0 +1,134 @@
+﻿{
+  "resourceType": "QuestionnaireResponse",
+  "status": "in-progress",
+  "questionnaire": "https://fhir.telstrahealth.com/fastforms/Questionnaire/prac-ext-demo",
+  "item": [
+    {
+      "linkId": "core-props",
+      "item": [
+        {
+          "linkId": "Practitioner.active",
+          "text": "Active",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.gender",
+          "text": "Gender",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "male",
+                "display": "Male"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.birthDate",
+          "text": "Birth Date",
+          "answer": [
+            {
+              "valueDate": "2024-09-10"
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.name.text",
+          "text": "Name",
+          "answer": [
+            {
+              "valueString": "Brian"
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.extension:appointmentRequired.value[x]",
+          "text": "Appointment Required",
+          "answer": [
+            {
+              "valueString": "sometimes"
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.telecom:website.value",
+          "text": "Website",
+          "answer": [
+            {
+              "valueString": "https://fhirpath-lab.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Practitioner.qualification",
+      "text": "Qualifications",
+      "item": [
+        {
+          "linkId": "Practitioner.qualification.code.coding.code",
+          "text": "Code",
+          "answer": [
+            {
+              "valueString": "c`1"
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.qualification.code.coding.display",
+          "text": "Display",
+          "answer": [
+            {
+              "valueString": "d1"
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.qualification.issuer.display",
+          "text": "Issued by",
+          "answer": [
+            {
+              "valueString": "Me"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Practitioner.qualification:certificate3-community",
+      "text": "Qualifications - Community cert 3",
+      "item": [
+        {
+          "linkId": "Practitioner.qualification:certificate3-community.code.coding.code",
+          "text": "Code",
+          "answer": [
+            {
+              "valueString": "blah"
+            }
+          ]
+        },
+        {
+          "linkId": "Practitioner.qualification:certificate3-community.issuer.display",
+          "text": "Issued by",
+          "answer": [
+            {
+              "valueString": "You"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "csiro:generated"
+      }
+    ]
+  }
+}

@@ -1,0 +1,319 @@
+﻿{
+  "resourceType": "Questionnaire",
+  "id": "extr-def-boe",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/StructureDefinition/terminology-server",
+      "valueUrl": "https://sqlonfhir-r4.azurewebsites.net/fhir"
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+      "valueCode": "Patient"
+    }
+  ],
+  "url": "http://fhir.forms-lab.com/Questionnaire/extr-def-boe",
+  "version": "0.1",
+  "name": "ExtrDefBitOfEverything",
+  "title": "Extract Defintion - Bit of everything",
+  "status": "active",
+  "date": "2024-05-10",
+  "publisher": "Brian Postlethwaite",
+  "description": "A Extract Demonstraton form that contains one of each of the item controls (except group)",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "user",
+        "display": "User Type"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "code": "extr-demo",
+            "display": "Extract Demonstration"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "extension": [
+        {
+          "url": "http://hl7.org/fhir/StructureDefinition/terminology-server",
+          "valueUrl": "https://sqlonfhir-r4.azurewebsites.net/fhir"
+        }
+      ],
+      "linkId": "root",
+      "text": "Bit of Everything",
+      "type": "group",
+      "item": [
+        {
+          "linkId": "Item-label",
+          "text": "display label",
+          "type": "display"
+        },
+        {
+          "linkId": "Item-string",
+          "text": "string",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given",
+          "type": "string"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://standards.healthconnex.com.au/fhir/StructureDefinition/Questionnaire-TextArea-Row",
+              "valueInteger": 10
+            }
+          ],
+          "linkId": "Item-text",
+          "text": "text",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family",
+          "type": "text"
+        },
+        {
+          "linkId": "Item-bool",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.active",
+          "text": "boolean",
+          "type": "boolean"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-initialExpression",
+              "valueExpression": {
+                "language": "text/fhirpath",
+                "expression": "%patient.gender"
+              }
+            }
+          ],
+          "linkId": "item-to-code",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender",
+          "text": "gender",
+          "type": "choice",
+          "answerOption": [
+            {
+              "valueCoding": {
+                "system": "http://example.com/fhir/CodeSystem/example",
+                "code": "male",
+                "display": "Male"
+              }
+            },
+            {
+              "valueCoding": {
+                "system": "http://example.com/fhir/CodeSystem/example",
+                "code": "female",
+                "display": "Female"
+              }
+            },
+            {
+              "valueCoding": {
+                "system": "http://example.com/fhir/CodeSystem/example",
+                "code": "other",
+                "display": "Other"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "Item-date",
+          "text": "date",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate",
+          "type": "date"
+        },
+        {
+          "linkId": "Item-datetime",
+          "text": "datetime",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.meta.lastUpdated",
+          "type": "dateTime"
+        },
+        {
+          "linkId": "Item-time",
+          "text": "time",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "time"
+        },
+        {
+          "linkId": "Item-integer",
+          "text": "integer",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.rank",
+          "type": "integer"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unit",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "m",
+                "display": "meters"
+              }
+            }
+          ],
+          "linkId": "Item-decimal",
+          "text": "decimal",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "decimal"
+        },
+        {
+          "linkId": "Item-url",
+          "text": "url",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "url"
+        },
+        {
+          "linkId": "Item-reference",
+          "text": "reference",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.generalPractitioner",
+          "type": "reference"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+              "valueCode": "image/png"
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+              "valueCode": "image/jpeg"
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+              "valueCode": "application/json"
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/mimeType",
+              "valueCode": "application/pdf"
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/maxSize",
+              "valueDecimal": 1000000
+            }
+          ],
+          "linkId": "Item-attachment",
+          "text": "attachment",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.photo",
+          "type": "attachment"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "m",
+                "display": "meters"
+              }
+            },
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-unitOption",
+              "valueCoding": {
+                "system": "http://unitsofmeasure.org",
+                "code": "cm",
+                "display": "centimeters"
+              }
+            }
+          ],
+          "linkId": "Item-quantity",
+          "text": "quantity",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "quantity"
+        },
+        {
+          "linkId": "Item-rb-local",
+          "text": "radiobuttons (answerOptions)",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "choice",
+          "repeats": false,
+          "answerOption": [
+            {
+              "valueCoding": {
+                "system": "http://example.org/coding-test",
+                "code": "a",
+                "display": "option A"
+              }
+            },
+            {
+              "valueCoding": {
+                "system": "http://example.org/coding-test",
+                "code": "b",
+                "display": "option B"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "Item-rb",
+          "text": "radiobuttons (answerValueSet)",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "choice",
+          "repeats": false,
+          "answerValueSet": "http://fhir.telstrahealth.com.au/tcm/ValueSet/ARE"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "drop-down"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "Item10",
+          "text": "drop-down (answerValueSet)",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "choice",
+          "repeats": false,
+          "answerValueSet": "http://fhir.telstrahealth.com.au/tcm/ValueSet/ARE"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "autocomplete"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "Item11",
+          "text": "autocomplete (countries)",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.language",
+          "type": "choice",
+          "repeats": false,
+          "answerValueSet": "http://fhir.telstrahealth.com.au/tcm/ValueSet/COU"
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/StructureDefinition/questionnaire-itemControl",
+              "valueCodeableConcept": {
+                "coding": [
+                  {
+                    "system": "http://hl7.org/fhir/questionnaire-item-control",
+                    "code": "autocomplete"
+                  }
+                ]
+              }
+            }
+          ],
+          "linkId": "Item12",
+          "text": "open-choice (countries)",
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.extension.value",
+          "type": "open-choice",
+          "repeats": false,
+          "answerValueSet": "http://fhir.telstrahealth.com.au/tcm/ValueSet/COU"
+        }
+      ]
+    }
+  ]
+}

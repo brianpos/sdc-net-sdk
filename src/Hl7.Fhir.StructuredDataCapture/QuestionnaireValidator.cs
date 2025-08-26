@@ -1175,7 +1175,7 @@ namespace Hl7.Fhir.StructuredDataCapture
 						issue.Details.Coding.Add(
 							new Coding(
 								ErrorCodeSystem,
-								ValidationResult.invalidFhirpathExpressionTypes.ToString(),
+								ValidationResult.invalidFhirpathExpression.ToString(),
 								"Invalid fhirpath expression (type check)"
 								)
 							);

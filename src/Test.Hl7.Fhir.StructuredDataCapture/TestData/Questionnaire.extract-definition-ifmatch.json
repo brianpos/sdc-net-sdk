@@ -1,0 +1,2542 @@
+﻿{
+  "resourceType": "Questionnaire",
+  "id": "canshare-BasicPathRequest",
+  "meta": {
+    "versionId": "12",
+    "lastUpdated": "2024-11-12T22:39:36.614386+00:00"
+  },
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "name",
+          "valueCoding": {
+            "code": "patient"
+          }
+        },
+        {
+          "url": "type",
+          "valueCode": "Patient"
+        },
+        {
+          "url": "description",
+          "valueString": "The patient that is to be used to pre-populate the form"
+        }
+      ],
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+    },
+    {
+      "extension": [
+        {
+          "url": "name",
+          "valueCoding": {
+            "code": "user"
+          }
+        },
+        {
+          "url": "type",
+          "valueCode": "Practitioner"
+        },
+        {
+          "url": "description",
+          "valueString": "The practitioner that is to be used to pre-populate the form"
+        }
+      ],
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-launchContext"
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-allocateId",
+      "valueString": "patientId"
+    }
+  ],
+  "url": "http://canshare.co.nz/questionnaire/BasicPathRequest",
+  "name": "BasicPathRequest",
+  "status": "active",
+  "publisher": "DEMO: David Hay",
+  "useContext": [
+    {
+      "code": {
+        "system": "http://terminology.hl7.org/CodeSystem/usage-context-type",
+        "code": "user",
+        "display": "User Type"
+      },
+      "valueCodeableConcept": {
+        "coding": [
+          {
+            "code": "extract",
+            "display": "Demo Extract"
+          }
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "linkId": "BasicPathRequest",
+      "text": "BasicPathRequest",
+      "type": "group",
+      "item": [
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtract",
+              "extension": [
+                {
+                  "url": "definition",
+                  "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient"
+                },
+                {
+                  "url": "fullUrl",
+                  "valueString": "%patientId"
+                }
+              ]
+            }
+          ],
+          "linkId": "BasicPathRequest.patient",
+          "text": "Patient details",
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "extension": [
+                    {
+                      "url": "definition",
+                      "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.system"
+                    },
+                    {
+                      "url": "fixed-value",
+                      "valueString": "https://standards.digital.health.nz/ns/nhi-id"
+                    }
+                  ],
+                  "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                }
+              ],
+              "linkId": "BasicPathRequest.patient.NHI",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.value",
+              "text": "NHI",
+              "type": "string"
+            },
+            {
+              "linkId": "BasicPathRequest.patient.name",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name",
+              "text": "Name",
+              "type": "group",
+              "item": [
+                {
+                  "linkId": "BasicPathRequest.patient.name.fname",
+                  "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given",
+                  "text": "First name",
+                  "type": "string"
+                },
+                {
+                  "linkId": "BasicPathRequest.patient.name.lname",
+                  "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family",
+                  "text": "Last name",
+                  "type": "string"
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.patient.dob",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate",
+              "text": "Date of birth",
+              "type": "date"
+            },
+            {
+              "linkId": "BasicPathRequest.patient.gender",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender",
+              "text": "Gender",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/administrative-gender",
+                    "code": "female",
+                    "display": "Female"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/administrative-gender",
+                    "code": "male",
+                    "display": "Male"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/administrative-gender",
+                    "code": "other",
+                    "display": "Other"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/administrative-gender",
+                    "code": "unknown",
+                    "display": "Unknown"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+              "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Organization"
+            }
+          ],
+          "linkId": "BasicPathRequest.lab",
+          "text": "The lab to process the request",
+          "type": "group",
+          "item": [
+            {
+              "extension": [
+                {
+                  "extension": [
+                    {
+                      "url": "definition",
+                      "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Organization#Organization.identifier.system"
+                    },
+                    {
+                      "url": "fixed-value",
+                      "valueString": "https://standards.digital.health.nz/ns/hpi-facility-id"
+                    }
+                  ],
+                  "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+                }
+              ],
+              "linkId": "BasicPathRequest.lab.hpi",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Organization#Organization.identifier.value",
+              "text": "HPI",
+              "type": "string"
+            }
+          ]
+        },
+        {
+          "extension": [
+            {
+              "extension": [
+                {
+                  "url": "definition",
+                  "valueCanonical": "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.subject.reference"
+                },
+                {
+                  "url": "expression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%patientId"
+                  }
+                }
+              ],
+              "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            },
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+              "valueCanonical": "http://hl7.org/fhir/StructureDefinition/ServiceRequest"
+            },
+            {
+              "extension": [
+                {
+                  "url": "definition",
+                  "valueCanonical": "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.status"
+                },
+                {
+                  "url": "fixed-value",
+                  "valueString": "active"
+                }
+              ],
+              "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            },
+            {
+              "extension": [
+                {
+                  "url": "definition",
+                  "valueCanonical": "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.intent"
+                },
+                {
+                  "url": "fixed-value",
+                  "valueString": "order"
+                }
+              ],
+              "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            }
+          ],
+          "linkId": "BasicPathRequest.request",
+          "text": "Request details",
+          "type": "group",
+          "item": [
+            {
+              "linkId": "BasicPathRequest.request.priority",
+              "definition": "http://hl7.org/fhir/StructureDefinition/ServiceRequest#ServiceRequest.priority",
+              "text": "priority",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/request-priority",
+                    "code": "asap",
+                    "display": "ASAP"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/request-priority",
+                    "code": "routine",
+                    "display": "Routine"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/request-priority",
+                    "code": "stat",
+                    "display": "STAT"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/request-priority",
+                    "code": "urgent",
+                    "display": "Urgent"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "extension": [
+            {
+              "extension": [
+                {
+                  "url": "definition",
+                  "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.subject.reference"
+                },
+                {
+                  "url": "expression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%patientId"
+                  }
+                }
+              ],
+              "url": "http://hl7.org/fhir/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            },
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+              "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Specimen"
+            }
+          ],
+          "linkId": "BasicPathRequest.specimen",
+          "text": "Details of the specimen/s *",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "linkId": "BasicPathRequest.specimen.id",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.id",
+              "text": "specimen ID",
+              "type": "string"
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.notes",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.note.text",
+              "text": "notes",
+              "type": "string"
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.type",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.type.coding",
+              "text": "type",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "427558003",
+                    "display": "Core biopsy specimen"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "397077004",
+                    "display": "Incisional biopsy specimen"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "309079007",
+                    "display": "Lymph node biopsy specimen"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "74964007",
+                    "display": "Other"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "382461000210105",
+                    "display": "Polyp by biopsy"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "361581000210106",
+                    "display": "Punch biopsy specimen"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.bodysite",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.bodySite.coding",
+              "text": "bodysite",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1186968006",
+                    "display": "Adenocarcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "28558000",
+                    "display": "Adenoma-like adenocarcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "302191000210106",
+                    "display": "Adenomatous polyp high grade dysplasia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "302181000210109",
+                    "display": "Adenomatous polyp low grade dysplasia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "59367005",
+                    "display": "Adenosquamous carcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "397358005",
+                    "display": "Aggressive systemic masto­cytosis (ASM)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "63449009",
+                    "display": "Alveolar rhabdomyosarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "73219006",
+                    "display": "Angiolipoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "19929002",
+                    "display": "Angiomyolipoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "863926008",
+                    "display": "Angiosarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "77381001",
+                    "display": "Burkitt lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "450898007",
+                    "display": "Calcifying nested epithelial stromal tumour"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "332651000210100",
+                    "display": "Carcinoma with sarcomatoid component"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "38549000",
+                    "display": "Carcinoma, undifferentiated"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "271944004",
+                    "display": "Clear cell sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "295141000210101",
+                    "display": "Desmoid type fibromatosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1172695008",
+                    "display": "Diffuse large B-cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "262591000210105",
+                    "display": "Duodenal-type follicular lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "14269005",
+                    "display": "Embryonal rhabdomyosarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "59583009",
+                    "display": "Embryonal sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1222550009",
+                    "display": "Enteropathy-associated T-cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "54124005",
+                    "display": "Epithelioid haemangioendothelioma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128805001",
+                    "display": "Extranodal NK/T-cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "397350003",
+                    "display": "Extranodal marginal zone lymphoma of mucosa-associated lymphoid tissue"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128816008",
+                    "display": "Follicular dendritic cell sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "55150002",
+                    "display": "Follicular lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "53801007",
+                    "display": "Ganglioneuroma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "12060004",
+                    "display": "Ganglioneuromatosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1187383001",
+                    "display": "Gastrointestinal stromal tumour"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "703603008",
+                    "display": "Glomangiomatosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1293211005",
+                    "display": "Glomus tumour of uncertain malignant potential"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1340048006",
+                    "display": "Glomus tumour, benign"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128908003",
+                    "display": "Glomus tumour, malignant"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1336225003",
+                    "display": "Granular cell tumour, benign"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "13238004",
+                    "display": "Granular cell tumour, malignant"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "253053003",
+                    "display": "Haemangioma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "103685007",
+                    "display": "Hepatosplenic T-cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128813000",
+                    "display": "Histiocytic sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "788565009",
+                    "display": "Indolent T-cell lymphoproliferative disorder of gastrointestinal tract"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "397356009",
+                    "display": "Indolent systemic mastocytosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "332591000210106",
+                    "display": "Inflammatory bowel disease associated dysplasia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "302441000210105",
+                    "display": "Inflammatory fibroid polyp"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1290860006",
+                    "display": "Inflammatory myofibroblastic tumour"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "263721000210109",
+                    "display": "Intestinal T-cell lymphoma, NOS"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1179374007",
+                    "display": "Kaposi sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "263631000210102",
+                    "display": "Langerhans' cell histiocytosis, NOS"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128628002",
+                    "display": "Large cell neuroendocrine carcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1162890002",
+                    "display": "Leiomyoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1163022006",
+                    "display": "Leiomyosarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "134328007",
+                    "display": "Lipoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "253057002",
+                    "display": "Lymphangioma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "74654000",
+                    "display": "Mantle cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128924002",
+                    "display": "Mast cell leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "13583002",
+                    "display": "Mast cell sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "332641000210103",
+                    "display": "Medullary adenocarcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1162635006",
+                    "display": "Melanoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "80656004",
+                    "display": "Mesenchymal hamartoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "733878002",
+                    "display": "Micropapillary adenocarcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "785766008",
+                    "display": "Mixed neuroendocrine non-neuroendocrine neoplasm"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "787036009",
+                    "display": "Monomorphic epitheliotropic intestinal T-cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "72495009",
+                    "display": "Mucinous adenocarcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128732001",
+                    "display": "Mucosal lentiginous melanoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1286767006",
+                    "display": "Neuroendocrine carcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1286768001",
+                    "display": "Neuroendocrine tumour"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1286769009",
+                    "display": "Neuroendocrine tumour grade 1"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1286770005",
+                    "display": "Neuroendocrine tumour grade 2"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1286772002",
+                    "display": "Neuroendocrine tumour grade 3"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "2142002",
+                    "display": "Nodular melanoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "74964007",
+                    "display": "Other"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "703604002",
+                    "display": "PEComa, benign"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "703605001",
+                    "display": "PEComa, malignant"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "1156946007",
+                    "display": "Perineurioma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "450909005",
+                    "display": "Plasmablastic lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "302451000210108",
+                    "display": "Plexiform fibromyxoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "725503008",
+                    "display": "Poorly cohesive carcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "263691000210101",
+                    "display": "Post-transplant lymphoproliferative disorder, NOS"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "30924005",
+                    "display": "Rhabdomyosarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "985004",
+                    "display": "Schwannoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "450948005",
+                    "display": "Serrated adenocarcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "302291000210102",
+                    "display": "Serrated dysplasia, high grade"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "302281000210104",
+                    "display": "Serrated dysplasia, low grade"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "87737001",
+                    "display": "Signet ring cell carcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "74364000",
+                    "display": "Small cell (neuroendocrine) carcinoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "128736003",
+                    "display": "Solitary fibrous tumour"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "301441000210102",
+                    "display": "Spindle cell/sclerosing rhabdomyosarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "63211008",
+                    "display": "Synovial sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "397357000",
+                    "display": "Systemic mastocytosis with an associated haematological neoplasm (AHN)"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.number",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Specimen#Specimen.collection.quantity",
+              "text": "number",
+              "type": "quantity"
+            }
+          ]
+        },
+        {
+          "extension": [
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionContext",
+              "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Procedure"
+            }
+          ],
+          "linkId": "BasicPathRequest.procedure",
+          "text": "Any previous procedures of note *",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "linkId": "BasicPathRequest.procedure.status",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Procedure#Procedure.status",
+              "text": "status",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "display": "There is neither a ValueSet nor options"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "extension": [
+            {
+              "extension": [
+                {
+                  "url": "definition",
+                  "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Condition#Condition.subject.reference"
+                },
+                {
+                  "url": "expression",
+                  "valueExpression": {
+                    "language": "text/fhirpath",
+                    "expression": "%patientId"
+                  }
+                }
+              ],
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-itemExtractionValue"
+            },
+            {
+              "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtract",
+              "extension": [
+                {
+                  "url": "definition",
+                  "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Condition"
+                },
+                {
+                  "url": "fullUrl",
+                  "valueString": "'full-url-test'"
+                },
+                {
+                  "url": "ifModifiedSince",
+                  "valueString": "now()"
+                }
+              ]
+            }
+          ],
+          "linkId": "BasicPathRequest.condition",
+          "text": "Any previous conditions of note *",
+          "type": "group",
+          "repeats": true,
+          "item": [
+            {
+              "linkId": "BasicPathRequest.condition.name",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Condition#Condition.code.text",
+              "text": "Name of condition",
+              "type": "string"
+            },
+            {
+              "linkId": "BasicPathRequest.condition.code",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Condition#Condition.code.coding",
+              "text": "code",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398201000210108",
+                    "display": "Abdomen and pelvis soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298241000210100",
+                    "display": "Acute leukaemia of mixed or ambiguous lineage"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "91861009",
+                    "display": "Acute myeloid leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "371963002",
+                    "display": "Adrenal cortex primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "371966005",
+                    "display": "Adrenal medulla primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "17602002",
+                    "display": "Amyloidosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1290013004",
+                    "display": "Anus neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93676009",
+                    "display": "Anus primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398111000210103",
+                    "display": "Appendicular skeleton primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1287196009",
+                    "display": "Appendix neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93679002",
+                    "display": "Appendix primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "351681000210101",
+                    "display": "B cell acute lymphoblastic leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "402536001",
+                    "display": "Basal cell carcinoma of skin primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "371970002",
+                    "display": "Biliary tract primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93689003",
+                    "display": "Bladder primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93727008",
+                    "display": "Brain primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390851000210107",
+                    "display": "Breast neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372137005",
+                    "display": "Breast primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "118617000",
+                    "display": "Burkitt lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "382691000210103",
+                    "display": "CNS nerve primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390871000210104",
+                    "display": "CNS neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398241000210106",
+                    "display": "CNS soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "207036003",
+                    "display": "Castleman disease"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372024009",
+                    "display": "Cervix uterine primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "188733003",
+                    "display": "Chronic eosinophilic leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "351691000210104",
+                    "display": "Chronic lymphocytic leukaemia and small lymphocytic lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "92818009",
+                    "display": "Chronic myeloid leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "127225006",
+                    "display": "Chronic myelomonocytic leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "188734009",
+                    "display": "Chronic neutrophilic leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390801000210106",
+                    "display": "Colorectal neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298181000210102",
+                    "display": "Colorectal primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93764002",
+                    "display": "Conjunctiva primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "397012002",
+                    "display": "Cutaneous mastocytosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "737223000",
+                    "display": "Dendritic cell neoplasm"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392221000210103",
+                    "display": "EBV-positive T/NK-cell lymphoid proliferation"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "448061000210104",
+                    "display": "Ear primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "109994006",
+                    "display": "Essential thrombocythaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://canshare.co.nz/fhir/CodeSystem/snomed-unpublished",
+                    "version": "1",
+                    "code": "505941000210108",
+                    "display": "Extra-adrenal paraganglioma primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398161000210101",
+                    "display": "Extremity soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398251000210109",
+                    "display": "Eye and orbit soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390901000210104",
+                    "display": "Eyelid primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "308121000",
+                    "display": "Follicular lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "350771000210102",
+                    "display": "Gestational trophoblastic disease primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390841000210109",
+                    "display": "Gynaecological neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "118613001",
+                    "display": "Hairy cell leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390861000210105",
+                    "display": "Head and neck neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398141000210102",
+                    "display": "Head and neck soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390811000210108",
+                    "display": "Hepatic neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "118599009",
+                    "display": "Hodgkin lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93831006",
+                    "display": "Hypopharynx primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392211000210108",
+                    "display": "Intestinal T/NK-cell lymphoid proliferation"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "445227008",
+                    "display": "Juvenile myelomonocytic leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93849006",
+                    "display": "Kidney primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "423195009",
+                    "display": "Lacrimal drainage system primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "371993008",
+                    "display": "Lacrimal gland primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "371995001",
+                    "display": "Larynx primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "95214007",
+                    "display": "Liver primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1290021005",
+                    "display": "Lung neuroendocrine tumor (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1259727001",
+                    "display": "Lung non-small cell carcinoma primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1268348008",
+                    "display": "Lung small cell carcinoma primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "307623001",
+                    "display": "Lymphoplasmacytic lymphoma (Waldenstrom macroglobulinaemia)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93883004",
+                    "display": "Major salivary gland primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390831000210101",
+                    "display": "Male genital neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "443487006",
+                    "display": "Mantle cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "447100004",
+                    "display": "Marginal zone lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "118615008",
+                    "display": "Mast cell sarcoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392161000210104",
+                    "display": "Mature T/NK-cell leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "444910004",
+                    "display": "Mediastinal large B cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1197332003",
+                    "display": "Melanoma CNS primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1268881002",
+                    "display": "Melanoma cutaneous primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298941000210107",
+                    "display": "Melanoma mucosal primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298951000210105",
+                    "display": "Melanoma ocular primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "109915008",
+                    "display": "Meninges primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298921000210101",
+                    "display": "Merkel cell carcinoma of skin primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "717780007",
+                    "display": "Monoclonal B cell lymphocytosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "109995007",
+                    "display": "Myelodysplastic neoplasm"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "351601000210105",
+                    "display": "Myeloid precursor lesion"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "351641000210108",
+                    "display": "Myeloid-lymphoid neoplasm with eosinophilia and defining gene rearrangement"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "109989006",
+                    "display": "Myeloma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "448051000210102",
+                    "display": "Nasal cavity and paranasal sinus primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "226521000119108",
+                    "display": "Nasopharynx primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93845000",
+                    "display": "Odontogenic primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "371984007",
+                    "display": "Oesophagus primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93931007",
+                    "display": "Optic nerve primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "448031000210108",
+                    "display": "Oral cavity and mobile tongue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93932000",
+                    "display": "Orbit primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93933005",
+                    "display": "Oropharynx primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "74964007",
+                    "display": "Other"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392081000210108",
+                    "display": "Other B-cell lymphoid proliferation"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93744007",
+                    "display": "Other CNS primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392121000210106",
+                    "display": "Other T-cell lymphoid proliferation"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392031000210109",
+                    "display": "Other aggressive B cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93725000",
+                    "display": "Other bone primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298231000210108",
+                    "display": "Other endocrine primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390881000210102",
+                    "display": "Other eye and orbit primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "297901000210108",
+                    "display": "Other gastrointestinal primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "297911000210105",
+                    "display": "Other gynaecological primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "297921000210100",
+                    "display": "Other head and neck primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "737224006",
+                    "display": "Other histiocytic and dendritic cell neoplasm"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "351651000210106",
+                    "display": "Other indolent B cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93880001",
+                    "display": "Other lung primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93885006",
+                    "display": "Other male genital primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "414653009",
+                    "display": "Other mastocytosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392141000210100",
+                    "display": "Other mature T/NK-cell lymphoid proliferation"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "445738007",
+                    "display": "Other myelodysplastic-myeloproliferative neoplasm"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "109993000",
+                    "display": "Other myeloproliferative neoplasm (MPN)"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298221000210106",
+                    "display": "Other neuroendocrine primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "382551000210106",
+                    "display": "Other neuroendocrine tumour gastroenteropancreatic (GEP-NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "382561000210109",
+                    "display": "Other neuroendocrine tumour non-gastroenteropancreatic (non-GEP NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "448111000210100",
+                    "display": "Other non-cutaneous melanoma primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "109977009",
+                    "display": "Other peripheral T-cell lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "351671000210103",
+                    "display": "Other plasma cell disorder"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94047004",
+                    "display": "Other skin primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372010005",
+                    "display": "Other soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298161000210105",
+                    "display": "Other thoracic primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94125001",
+                    "display": "Other urinary system primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://canshare.co.nz/fhir/CodeSystem/snomed-unpublished",
+                    "version": "1",
+                    "code": "507491000210102",
+                    "display": "Ovary germ cell primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://canshare.co.nz/fhir/CodeSystem/snomed-unpublished",
+                    "version": "1",
+                    "code": "507501000210107",
+                    "display": "Ovary sex cord-stromal primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://canshare.co.nz/fhir/CodeSystem/snomed-unpublished",
+                    "version": "1",
+                    "code": "507511000210109",
+                    "display": "Ovary, fallopian tube and peritoneum epithelial primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://canshare.co.nz/fhir/CodeSystem/snomed-unpublished",
+                    "version": "1",
+                    "code": "507481000210104",
+                    "display": "Ovary, fallopian tube and peritoneum other primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1287665004",
+                    "display": "Pancreas neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372003004",
+                    "display": "Pancreas primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "448081000210107",
+                    "display": "Parapharyngeal space primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93943008",
+                    "display": "Parathyroid gland primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372115003",
+                    "display": "Pelvic bone primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372005006",
+                    "display": "Penis primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390991000210105",
+                    "display": "Pituitary neuroendocrine tumour (PitNET)/adenoma primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392071000210106",
+                    "display": "Plasmacytoid dendritic cell neoplasm"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93966009",
+                    "display": "Pleural primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "109992005",
+                    "display": "Polycythaemia vera"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "307649006",
+                    "display": "Primary CNS lymphoma"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "392201000210106",
+                    "display": "Primary cutaneous T-cell lymphoproliferative disorder"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "307651005",
+                    "display": "Primary myelofibrosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93974005",
+                    "display": "Prostate primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "301051000210107",
+                    "display": "Renal pelvis and ureter primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93987004",
+                    "display": "Retina primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398231000210103",
+                    "display": "Retroperitoneal soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93998003",
+                    "display": "Sclera primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372123001",
+                    "display": "Skin of head and neck primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398131000210105",
+                    "display": "Skin soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "93723007",
+                    "display": "Skull and facial bone primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1287667007",
+                    "display": "Small intestine neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94048009",
+                    "display": "Small intestine primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94068003",
+                    "display": "Spinal cord primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298931000210104",
+                    "display": "Squamous cell carcinoma of skin primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1290015006",
+                    "display": "Stomach neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372014001",
+                    "display": "Stomach primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "298171000210104",
+                    "display": "Stroma-derived neoplasm of lymphoid tissue"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "397016004",
+                    "display": "Systemic mastocytosis"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "420890002",
+                    "display": "T cell acute lymphoblastic leukaemia"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "476521000210100",
+                    "display": "Testicular non-seminoma primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "476501000210108",
+                    "display": "Testicular other primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "476511000210105",
+                    "display": "Testicular seminoma primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "398121000210108",
+                    "display": "Thoracic bone primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94062002",
+                    "display": "Thoracic soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "1287197000",
+                    "display": "Thymus neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94096009",
+                    "display": "Thymus primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94098005",
+                    "display": "Thyroid gland primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94104001",
+                    "display": "Trachea primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94063007",
+                    "display": "Trunk soft tissue primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "310504009",
+                    "display": "Unknown primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "448091000210109",
+                    "display": "Unknown primary tumour of head and neck"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94123008",
+                    "display": "Urethra primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "390821000210103",
+                    "display": "Urinary system neuroendocrine tumour (NET) primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "476481000210100",
+                    "display": "Uterine primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94128004",
+                    "display": "Uveal tract primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372025005",
+                    "display": "Vagina primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "372028007",
+                    "display": "Vertebral column primary"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "version": "http://snomed.info/sct/21000210109/version/20241001",
+                    "code": "94143002",
+                    "display": "Vulva primary"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.condition.clinicalStatus",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Condition#Condition.clinicalStatus.coding",
+              "text": "clinicalStatus",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "code": "active",
+                    "display": "Active"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "code": "inactive",
+                    "display": "Inactive"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "code": "recurrence",
+                    "display": "Recurrence"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "code": "relapse",
+                    "display": "Relapse"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "code": "remission",
+                    "display": "Remission"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                    "code": "resolved",
+                    "display": "Resolved"
+                  }
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.condition.severity",
+              "definition": "http://hl7.org/fhir/StructureDefinition/Condition#Condition.severity.coding",
+              "text": "severity",
+              "type": "choice",
+              "answerOption": [
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "255604002",
+                    "display": "Mild"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "6736007",
+                    "display": "Moderate severity"
+                  }
+                },
+                {
+                  "valueCoding": {
+                    "system": "http://snomed.info/sct",
+                    "code": "24484000",
+                    "display": "Severe"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

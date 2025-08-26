@@ -312,12 +312,12 @@ namespace Hl7.Fhir.StructuredDataCapture.Test
 				DebugDumpXmlDiagnostics(outcome);
 
 			// Cool we found 4 errors with the validator!
-            Assert.AreEqual(7, outcome.Errors);
+            Assert.AreEqual(8, outcome.Errors);
 			Assert.AreEqual(OperationOutcome.IssueSeverity.Error, outcome.Issue[0].Severity);
 			Assert.AreEqual(OperationOutcome.IssueType.Exception, outcome.Issue[0].Code);
 			Assert.AreEqual(QuestionnaireValidator.ErrorCodeSystem, outcome.Issue[0].Details.Coding[0].System);
 			Assert.AreEqual("invalidFhirpathExpression", outcome.Issue[0].Details.Coding[0].Code);
-			Assert.AreEqual(1, outcome.Warnings);
+			Assert.AreEqual(0, outcome.Warnings);
 			Assert.AreEqual("Questionnaire.extension[1].expression", outcome.Issue[0].Expression.First());
 
 		}
@@ -337,9 +337,9 @@ namespace Hl7.Fhir.StructuredDataCapture.Test
 			Assert.AreEqual(OperationOutcome.IssueSeverity.Warning, outcome.Issue[0].Severity);
 			Assert.AreEqual(OperationOutcome.IssueType.MultipleMatches, outcome.Issue[0].Code);
 			Assert.AreEqual(QuestionnaireValidator.ErrorCodeSystem, outcome.Issue[0].Details.Coding[0].System);
-			Assert.AreEqual("invalidFhirpathExpressionTypes", outcome.Issue[0].Details.Coding[0].Code);
-			Assert.AreEqual(176, outcome.Warnings);
-			Assert.AreEqual("Questionnaire.item[0].item[1].item[2].extension[0].expression", outcome.Issue[0].Expression.First());
+			Assert.AreEqual("invalidFhirpathExpression", outcome.Issue[0].Details.Coding[0].Code);
+			Assert.AreEqual(188, outcome.Warnings);
+			Assert.AreEqual("Questionnaire.item[0].item[1].item[2].extension[0].value.expression", outcome.Issue[0].Expression.First());
 		}
 
 		public static void DebugDumpXmlDiagnostics(OperationOutcome outcome)
@@ -604,17 +604,16 @@ namespace Hl7.Fhir.StructuredDataCapture.Test
 
 			DebugDumpXmlDiagnostics(outcome);
 
-			Assert.AreEqual(1, outcome.Issue.Count);
+			Assert.AreEqual(3, outcome.Issue.Count);
 			Assert.AreEqual(0, outcome.Fatals);
-			Assert.AreEqual(1, outcome.Errors);
+			Assert.AreEqual(3, outcome.Errors);
 			Assert.AreEqual(0, outcome.Warnings);
 
 			Assert.AreEqual(OperationOutcome.IssueSeverity.Error, outcome.Issue[0].Severity);
-			Assert.AreEqual(OperationOutcome.IssueType.Value, outcome.Issue[0].Code);
+			Assert.AreEqual(OperationOutcome.IssueType.NotFound, outcome.Issue[0].Code);
 			Assert.AreEqual(QuestionnaireValidator.ErrorCodeSystem, outcome.Issue[0].Details.Coding[0].System);
-			Assert.AreEqual("invalidConstraint", outcome.Issue[0].Details.Coding[0].Code);
-			// Also need to determine what location the report is on, the answer, or the item?
-			Assert.AreEqual("Questionnaire.item[0].extension[0].extension[2]", outcome.Issue[0].Expression.First());
+			Assert.AreEqual("invalidFhirpathExpression", outcome.Issue[0].Details.Coding[0].Code);
+			Assert.AreEqual("Questionnaire.item[0].extension[0].value.expression", outcome.Issue[0].Expression.First());
 		}
 
 		[TestMethod]
@@ -677,7 +676,7 @@ namespace Hl7.Fhir.StructuredDataCapture.Test
 			Assert.AreEqual(0, outcome.Warnings);
 
 			Assert.AreEqual(OperationOutcome.IssueSeverity.Error, outcome.Issue[0].Severity);
-			Assert.AreEqual(OperationOutcome.IssueType.Exception, outcome.Issue[0].Code);
+			Assert.AreEqual(OperationOutcome.IssueType.NotFound, outcome.Issue[0].Code);
 			Assert.AreEqual(QuestionnaireValidator.ErrorCodeSystem, outcome.Issue[0].Details.Coding[0].System);
 			Assert.AreEqual("invalidFhirpathExpression", outcome.Issue[0].Details.Coding[0].Code);
 			// Also need to determine what location the report is on, the answer, or the item?

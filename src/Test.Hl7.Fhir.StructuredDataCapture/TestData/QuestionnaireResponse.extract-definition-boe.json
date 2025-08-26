@@ -1,0 +1,148 @@
+﻿{
+  "resourceType": "QuestionnaireResponse",
+  "status": "in-progress",
+  "questionnaire": "http://fhir.forms-lab.com/Questionnaire/extr-def-boe|0.1",
+  "item": [
+    {
+      "linkId": "root",
+      "text": "Bit of Everything",
+      "item": [
+        {
+          "linkId": "Item-string",
+          "text": "string",
+          "answer": [
+            {
+              "valueString": "single line string"
+            }
+          ]
+        },
+        {
+          "linkId": "Item-text",
+          "text": "text",
+          "answer": [
+            {
+              "valueString": "multi-line\nstring"
+            }
+          ]
+        },
+        {
+          "linkId": "Item-bool",
+          "text": "boolean",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "item-to-code",
+          "text": "gender",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "male",
+                "display": "Male"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "Item-date",
+          "text": "date",
+          "answer": [
+            {
+              "valueDate": "2024-09-11"
+            }
+          ]
+        },
+        {
+          "linkId": "Item-datetime",
+          "text": "datetime",
+          "answer": [
+            {
+              "valueDateTime": "2024-09-20T13:45:00+10:00"
+            }
+          ]
+        },
+        {
+          "linkId": "Item-time",
+          "text": "time",
+          "answer": [
+            {
+              "valueTime": "03:45:00"
+            }
+          ]
+        },
+        {
+          "linkId": "Item-integer",
+          "text": "integer",
+          "answer": [
+            {
+              "valueInteger": 12
+            }
+          ]
+        },
+        {
+          "linkId": "Item-decimal",
+          "text": "decimal",
+          "answer": [
+            {
+              "valueDecimal": 3.5
+            }
+          ]
+        },
+        {
+          "linkId": "Item-url",
+          "text": "url",
+          "answer": [
+            {
+              "valueUri": "http://example.com/url"
+            }
+          ]
+        },
+        {
+          "linkId": "Item-reference",
+          "text": "reference",
+          "answer": [
+            {
+              "valueReference": { "reference": "Patient/example" }
+            }
+          ]
+        },
+        {
+          "linkId": "Item-quantity",
+          "text": "quantity",
+          "answer": [
+            {
+              "valueQuantity": {
+                "value": 12.5,
+                "unit": "Mg"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "Item-rb-local",
+          "text": "radiobuttons (answerOptions)",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://example.org/coding-test",
+                "code": "a",
+                "display": "option A"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "csiro:generated"
+      }
+    ]
+  }
+}

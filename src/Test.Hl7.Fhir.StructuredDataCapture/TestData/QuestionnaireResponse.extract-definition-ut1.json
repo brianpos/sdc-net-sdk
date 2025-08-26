@@ -1,0 +1,94 @@
+﻿{
+  "resourceType": "QuestionnaireResponse",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaireresponse|3.0"
+    ],
+    "tag": [
+      {
+        "code": "lformsVersion: 36.6.0"
+      }
+    ]
+  },
+  "status": "completed",
+  "authored": "2025-01-20T03:31:12.058Z",
+  "questionnaire": "http://hl7.org/fhir/uv/sdc/Questionnaire/extract-ut1",
+  "item": [
+    {
+      "linkId": "name",
+      "text": "Name",
+      "item": [
+        {
+          "linkId": "given",
+          "text": "Given Name(s)",
+          "answer": [
+            {
+              "valueString": "Brian"
+            },
+            {
+              "valueString": "SDC"
+            }
+          ]
+        },
+        {
+          "answer": [
+            {
+              "valueString": "Postlethwaite"
+            }
+          ],
+          "linkId": "family",
+          "text": "Family/Surname"
+        }
+      ]
+    },
+    {
+      "answer": [
+        {
+          "valueCoding": {
+            "system": "http://hl7.org/fhir/administrative-gender",
+            "code": "male",
+            "display": "Male"
+          }
+        }
+      ],
+      "linkId": "gender",
+      "text": "Gender"
+    },
+    {
+      "answer": [
+        {
+          "valueDate": "2024-09-10"
+        }
+      ],
+      "linkId": "dob",
+      "text": "Date of Birth"
+    },
+    {
+      "answer": [
+        {
+          "valueString": "802342342"
+        }
+      ],
+      "linkId": "ihi",
+      "text": "National Identifier (IHI)"
+    },
+    {
+      "answer": [
+        {
+          "valueString": "12354"
+        }
+      ],
+      "linkId": "mobile-phone",
+      "text": "Mobile Phone number"
+    }
+  ],
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter James Chalmers"
+  },
+  "author": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "id": "90a7-4b87601"
+}

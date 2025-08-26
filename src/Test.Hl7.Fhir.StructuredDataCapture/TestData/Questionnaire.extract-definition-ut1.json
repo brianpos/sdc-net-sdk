@@ -1,0 +1,153 @@
+﻿{
+  "resourceType": "Questionnaire",
+  "id": "extract-ut1",
+  "extension": [
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-extractAllocateId",
+      "valueString": "NewPatientId"
+    },
+    {
+      "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtract",
+      "extension": [
+        {
+          "url": "definition",
+          "valueCanonical": "http://hl7.org/fhir/StructureDefinition/Patient"
+        },
+        {
+          "url": "fullUrl",
+          "valueString": "%NewPatientId"
+        }
+      ]
+    }
+  ],
+  "url": "http://hl7.org/fhir/uv/sdc/Questionnaire/extract-ut1",
+  "status": "draft",
+  "experimental": true,
+  "title": "Complex Extract Unit tests - ut1: Top level allocate ID, top level extract",
+  "publisher": "Brian Postlethwaite",
+  "item": [
+    {
+      "extension": [
+        {
+          "extension": [
+            {
+              "url": "definition",
+              "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.text"
+            },
+            {
+              "url": "expression",
+              "valueExpression": {
+                "language": "text/fhirpath",
+                "expression": "item.where(linkId='given' or linkId='family').answer.value.join(' ')"
+              }
+            }
+          ],
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
+        }
+      ],
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name",
+      "linkId": "name",
+      "text": "Name",
+      "type": "group",
+      "repeats": true,
+      "item": [
+        {
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.given",
+          "linkId": "given",
+          "text": "Given Name(s)",
+          "type": "string",
+          "repeats": true
+        },
+        {
+          "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.name.family",
+          "linkId": "family",
+          "text": "Family/Surname",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.gender",
+      "linkId": "gender",
+      "text": "Gender",
+      "type": "choice",
+      "answerValueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+    },
+    {
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.birthDate",
+      "linkId": "dob",
+      "text": "Date of Birth",
+      "type": "date"
+    },
+    {
+      "extension": [
+        {
+          "extension": [
+            {
+              "url": "definition",
+              "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.type"
+            },
+            {
+              "url": "fixed-value",
+              "valueCodeableConcept": {
+                "text": "National Identifier (IHI)"
+              }
+            }
+          ],
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
+        },
+        {
+          "extension": [
+            {
+              "url": "definition",
+              "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.system"
+            },
+            {
+              "url": "fixed-value",
+              "valueUri": "http://example.org/nhio"
+            }
+          ],
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
+        }
+      ],
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.identifier.value",
+      "linkId": "ihi",
+      "text": "National Identifier (IHI)",
+      "type": "string"
+    },
+    {
+      "extension": [
+        {
+          "extension": [
+            {
+              "url": "definition",
+              "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.use"
+            },
+            {
+              "url": "fixed-value",
+              "valueCode": "mobile"
+            }
+          ],
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
+        },
+        {
+          "extension": [
+            {
+              "url": "definition",
+              "valueUri": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.system"
+            },
+            {
+              "url": "fixed-value",
+              "valueCode": "phone"
+            }
+          ],
+          "url": "http://hl7.org/fhir/uv/sdc/StructureDefinition/sdc-questionnaire-definitionExtractValue"
+        }
+      ],
+      "definition": "http://hl7.org/fhir/StructureDefinition/Patient#Patient.telecom.value",
+      "linkId": "mobile-phone",
+      "text": "Mobile Phone number",
+      "type": "string"
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+﻿{
+  "resourceType": "QuestionnaireResponse",
+  "meta": {
+    "lastUpdated": "2024-11-13T00:40:44.4794403+00:00",
+    "tag": [
+      {
+        "code": "csiro:generated"
+      }
+    ]
+  },
+  "questionnaire": "http://canshare.co.nz/questionnaire/BasicPathRequest",
+  "status": "in-progress",
+  "item": [
+    {
+      "linkId": "BasicPathRequest",
+      "text": "BasicPathRequest",
+      "item": [
+        {
+          "linkId": "BasicPathRequest.patient",
+          "text": "Patient details",
+          "item": [
+            {
+              "linkId": "BasicPathRequest.patient.NHI",
+              "text": "NHI",
+              "answer": [
+                {
+                  "valueString": "8000012354"
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.patient.name",
+              "text": "Name",
+              "item": [
+                {
+                  "linkId": "BasicPathRequest.patient.name.fname",
+                  "text": "First name",
+                  "answer": [
+                    {
+                      "valueString": "Brian"
+                    }
+                  ]
+                },
+                {
+                  "linkId": "BasicPathRequest.patient.name.lname",
+                  "text": "Last name",
+                  "answer": [
+                    {
+                      "valueString": "Postlethwaite"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.patient.gender",
+              "text": "Gender",
+              "answer": [
+                {
+                  "valueCoding": {
+                    "system": "http://hl7.org/fhir/administrative-gender",
+                    "code": "male",
+                    "display": "Male"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "BasicPathRequest.specimen",
+          "text": "Details of the specimen/s *",
+          "item": [
+            {
+              "linkId": "BasicPathRequest.specimen.id",
+              "text": "specimen ID",
+              "answer": [
+                {
+                  "valueString": "spec-id"
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.notes",
+              "text": "notes",
+              "answer": [
+                {
+                  "valueString": "Some notes"
+                }
+              ]
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.type",
+              "text": "type"
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.bodysite",
+              "text": "bodysite"
+            },
+            {
+              "linkId": "BasicPathRequest.specimen.number",
+              "text": "number"
+            }
+          ]
+        },
+        {
+          "linkId": "BasicPathRequest.procedure",
+          "text": "Any previous procedures of note *",
+          "item": [
+            {
+              "linkId": "BasicPathRequest.procedure.status",
+              "text": "status"
+            }
+          ]
+        },
+        {
+          "linkId": "BasicPathRequest.condition",
+          "text": "Any previous conditions of note *",
+          "item": [
+            {
+              "linkId": "BasicPathRequest.condition.name",
+              "text": "Name of condition"
+            },
+            {
+              "linkId": "BasicPathRequest.condition.code",
+              "text": "code"
+            },
+            {
+              "linkId": "BasicPathRequest.condition.clinicalStatus",
+              "text": "clinicalStatus"
+            },
+            {
+              "linkId": "BasicPathRequest.condition.severity",
+              "text": "severity"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "subject": {
+    "reference": "Patient/45086382",
+    "display": "Patrick Cooper"
+  },
+  "author": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "authored": "2024-11-13T00:40:44.093Z"
+}

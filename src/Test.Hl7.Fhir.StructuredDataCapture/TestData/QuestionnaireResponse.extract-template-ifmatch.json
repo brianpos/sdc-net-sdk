@@ -1,0 +1,118 @@
+﻿{
+  "resourceType": "QuestionnaireResponse",
+  "status": "in-progress",
+  "questionnaire": "http://fhir.forms-lab.com/Questionnaire/extract-complex-template",
+  "item": [
+    {
+      "linkId": "patient",
+      "text": "Patient Information",
+      "item": [
+        {
+          "linkId": "name",
+          "text": "Name",
+          "item": [
+            {
+              "linkId": "given",
+              "text": "Given Name(s)",
+              "answer": [
+                {
+                  "valueString": "Brian"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "gender",
+          "text": "Gender",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "male",
+                "display": "Male"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "contacts",
+      "text": "Contacts",
+      "item": [
+        {
+          "linkId": "contact-name",
+          "text": "Name",
+          "answer": [
+            {
+              "valueString": "Test Contact"
+            }
+          ]
+        },
+        {
+          "linkId": "relationship",
+          "text": "Relationship",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://terminology.hl7.org/CodeSystem/v2-0131",
+                "code": "CP",
+                "display": "Contact person"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "obs",
+      "text": "Observations",
+      "item": [
+        {
+          "linkId": "height",
+          "text": "What is your current height (m)",
+          "answer": [
+            {
+              "valueDecimal": 45
+            }
+          ]
+        },
+        {
+          "linkId": "weight",
+          "text": "What is your current weight (kg)",
+          "answer": [
+            {
+              "valueDecimal": 45
+            }
+          ]
+        },
+        {
+          "linkId": "complication",
+          "text": "Have you had a Sigmoidoscopy Complication (concern with invasive procedure, for example)",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "csiro:generated"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/45086382",
+    "display": "Patrick Cooper"
+  },
+  "author": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "authored": "2024-11-13T06:19:53.783Z"
+}

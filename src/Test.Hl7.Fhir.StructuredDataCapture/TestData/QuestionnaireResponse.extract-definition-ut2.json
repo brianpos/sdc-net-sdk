@@ -1,0 +1,105 @@
+﻿{
+  "resourceType": "QuestionnaireResponse",
+  "status": "in-progress",
+  "questionnaire": "http://hl7.org/fhir/uv/sdc/Questionnaire/extract-ut2",
+  "item": [
+    {
+      "linkId": "root",
+      "text": "Patient extraction sample",
+      "item": [
+        {
+          "linkId": "name",
+          "text": "Name",
+          "item": [
+            {
+              "linkId": "given",
+              "text": "Given Name(s)",
+              "answer": [
+                {
+                  "valueString": "Brian"
+                },
+                {
+                  "valueString": "SDC"
+                }
+              ]
+            },
+            {
+              "linkId": "family",
+              "text": "Family/Surname",
+              "answer": [
+                {
+                  "valueString": "Postlethwaite"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "linkId": "gender",
+          "text": "Gender",
+          "answer": [
+            {
+              "valueCoding": {
+                "system": "http://hl7.org/fhir/administrative-gender",
+                "code": "male",
+                "display": "Male",
+                "designation": [
+                  {
+                    "use": {
+                      "system": "http://terminology.hl7.org/CodeSystem/designation-usage",
+                      "code": "display"
+                    },
+                    "value": "Male"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "dob",
+          "text": "Date of Birth",
+          "answer": [
+            {
+              "valueDate": "2025-01-01"
+            }
+          ]
+        },
+        {
+          "linkId": "ihi",
+          "text": "National Identifier (IHI)",
+          "answer": [
+            {
+              "valueString": "12345"
+            }
+          ]
+        },
+        {
+          "linkId": "mobile-phone",
+          "text": "Mobile Phone number",
+          "answer": [
+            {
+              "valueString": "12354"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "tag": [
+      {
+        "code": "csiro:generated"
+      }
+    ]
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "Peter James Chalmers"
+  },
+  "author": {
+    "reference": "Practitioner/example",
+    "display": "Dr Adam Careful"
+  },
+  "authored": "2025-01-20T04:08:16.036Z"
+}

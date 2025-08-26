@@ -1,0 +1,1616 @@
+﻿{
+  "resourceType": "Bundle",
+  "id": "654c68099ecb4cc6b40fac58946ec562",
+  "meta": {
+    "lastUpdated": "2024-09-20T12:25:20.9475389+10:00"
+  },
+  "type": "collection",
+  "total": 2,
+  "entry": [
+    {
+      "fullUrl": "https://localhost:5001/StructureDefinition/hcxdir-practitioner/_history/1",
+      "resource": {
+        "resourceType": "StructureDefinition",
+        "id": "hcxdir-practitioner",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-09-13T20:25:32.6723067+10:00",
+          "tag": [
+            {
+              "system": "http://hl7.org/fhir/v3/ObservationValue",
+              "code": "SUBSETTED"
+            }
+          ]
+        },
+        "extension": [
+          {
+            "url": "http://hl7.org/fhir/StructureDefinition/structuredefinition-fmm",
+            "valueInteger": 3
+          }
+        ],
+        "url": "http://healthconnex.com.au/hcxd/Practitioner",
+        "version": "1",
+        "name": "hcxdir-practitioner",
+        "title": "hcxdir-practitioner",
+        "status": "draft",
+        "experimental": true,
+        "publisher": "Healthconnex",
+        "description": "Base StructureDefinition for Practitioner used by HcxDirectory",
+        "copyright": "Healthconnex",
+        "fhirVersion": "4.0.0",
+        "kind": "resource",
+        "abstract": false,
+        "type": "Practitioner",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Practitioner",
+        "derivation": "constraint",
+        "differential": {
+          "element": [
+            {
+              "id": "1",
+              "path": "Practitioner",
+              "short": "A person with a  formal responsibility in the provisioning of healthcare or related services",
+              "definition": "A person who is directly or indirectly involved in the provisioning of healthcare.",
+              "comment": "Note that a cab driver no longer fits the bill. You probably would be interested in the organization rather than the individual?",
+              "min": 0,
+              "max": "*",
+              "base": {
+                "path": "Practitioner",
+                "min": 0,
+                "max": "*"
+              }
+            },
+            {
+              "id": "2",
+              "path": "Practitioner.extension",
+              "sliceName": "appointmentRequired",
+              "label": "Appointment Required",
+              "definition": "Optional Extensions Element - found in all resources.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.extension",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "Extension",
+                  "profile": [
+                    "http://healthconnex.com.au/hcxd/Practitioner/AppointmentRequired"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "8",
+              "path": "Practitioner.active",
+              "label": "Fhir Status",
+              "short": "FHIR Status",
+              "definition": "FHIR Status",
+              "comment": "Default is true.   If the practitioner is not in use by one organization, then it should mark the period on the PractitonerRole with an end date (even if they are active) as they may be active in another role.",
+              "requirements": "Need to be able to mark a practitioner record as not to be used because it was created in error.",
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.active",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "boolean"
+                }
+              ]
+            },
+            {
+              "id": "9",
+              "path": "Practitioner.name",
+              "label": "Name",
+              "short": "A name associated with the person",
+              "definition": "A name associated with the person.",
+              "requirements": "Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that person.",
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.name",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "HumanName"
+                }
+              ]
+            },
+            {
+              "id": "10",
+              "path": "Practitioner.name.use",
+              "short": "usual | official | temp | nickname | anonymous | old | maiden",
+              "definition": "Identifies the purpose for this name.",
+              "comment": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old.",
+              "requirements": "Allows the appropriate name for a particular context of use to be selected from among a set of names.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.name.use",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "description": "The use of a human name",
+                "valueSet": "http://hl7.org/fhir/ValueSet/name-use"
+              }
+            },
+            {
+              "id": "11",
+              "path": "Practitioner.name.family",
+              "short": "Family name (often called 'Surname')",
+              "definition": "The part of a name that links to the genealogy. In some cultures (e.g. Eritrea) the family name of a son is the first name of his father.",
+              "comment": "For family name, hyphenated names such as \"Smith-Jones\" are a single name, but names with spaces such as \"Smith Jones\" are broken into multiple parts.",
+              "alias": [
+                "surname"
+              ],
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.name.family",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ]
+            },
+            {
+              "id": "12",
+              "path": "Practitioner.name.given",
+              "short": "Given names (not always 'first'). Includes middle names",
+              "definition": "Given name.",
+              "comment": "If only initials are recorded, they may be used in place of the full name.  Not called \"first name\" since given names do not always come first.",
+              "alias": [
+                "first name",
+                "middle name"
+              ],
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.name.given",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ]
+            },
+            {
+              "id": "13",
+              "path": "Practitioner.name.prefix",
+              "short": "Parts that come before the name",
+              "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the start of the name.",
+              "comment": "https://sqlonfhir-dstu2.azurewebsites.net/fhir/ValueSet/hcxdir-person-title-valueset",
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.name.prefix",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ]
+            },
+            {
+              "id": "14",
+              "path": "Practitioner.name.suffix",
+              "short": "Parts that come after the name",
+              "definition": "Part of the name that is acquired as a title due to academic, legal, employment or nobility status, etc. and that appears at the end of the name.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.name.suffix",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XPN/4"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./part[partType = SFX]"
+                }
+              ]
+            },
+            {
+              "id": "15",
+              "path": "Practitioner.name.period",
+              "short": "Time period when name was/is in use",
+              "definition": "Indicates the period of time when this name was valid for the named person.",
+              "requirements": "Allows names to be placed in historical context.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.name.period",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "Period"
+                }
+              ]
+            },
+            {
+              "id": "16",
+              "path": "Practitioner.telecom",
+              "slicing": {
+                "discriminator": [
+                  {
+                    "type": "value",
+                    "path": "system"
+                  }
+                ],
+                "rules": "openAtEnd"
+              },
+              "short": "A contact detail for the practitioner",
+              "definition": "A contact detail for the practitioner, e.g. a telephone number or an email address.",
+              "comment": "Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.",
+              "requirements": "Need to know how to reach a practitioner.",
+              "min": 0,
+              "max": "*",
+              "base": {
+                "path": "Practitioner.telecom",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "ContactPoint"
+                }
+              ]
+            },
+            {
+              "id": "17",
+              "path": "Practitioner.telecom.extension",
+              "slicing": {
+                "discriminator": [
+                  {
+                    "type": "value",
+                    "path": "url"
+                  }
+                ],
+                "rules": "openAtEnd"
+              }
+            },
+            {
+              "id": "18",
+              "path": "Practitioner.telecom.extension",
+              "sliceName": "IsMain",
+              "label": "Is Main",
+              "definition": "Optional Extensions Element - found in all resources.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.extension",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "Extension",
+                  "profile": [
+                    "http://healthconnex.com.au/hcxd/Phone/IsMain"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "19",
+              "path": "Practitioner.telecom.extension",
+              "sliceName": "Prefix",
+              "label": "Prefix",
+              "definition": "Optional Extensions Element - found in all resources.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.extension",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "Extension",
+                  "profile": [
+                    "http://healthconnex.com.au/hcxd/Phone/Prefix"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "20",
+              "path": "Practitioner.telecom.extension",
+              "sliceName": "Type",
+              "label": "Type",
+              "definition": "Optional Extensions Element - found in all resources.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.extension",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "Extension",
+                  "profile": [
+                    "http://healthconnex.com.au/hcxd/Phone/Type"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "21",
+              "path": "Practitioner.telecom.system",
+              "short": "phone | fax | email | pager | other",
+              "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.system",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "condition": [
+                "cpt-2"
+              ],
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "description": "Telecommunications form for contact point",
+                "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system"
+              }
+            },
+            {
+              "id": "22",
+              "path": "Practitioner.telecom.value",
+              "short": "The actual contact point details",
+              "definition": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
+              "comment": "Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.",
+              "requirements": "Need to support legacy numbers that are not in a tightly controlled format.",
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.value",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ]
+            },
+            {
+              "id": "23",
+              "path": "Practitioner.telecom.use",
+              "short": "home | work | temp | old | mobile - purpose of this contact point",
+              "definition": "Identifies the purpose for the contact point.",
+              "comment": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old.",
+              "requirements": "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.telecom.use",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "description": "Use of contact point",
+                "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use"
+              }
+            },
+            {
+              "id": "24",
+              "path": "Practitioner.telecom.rank",
+              "short": "Specify preferred order of use (1 = highest)",
+              "definition": "Specifies a preferred order in which to use a set of contacts. Contacts are ranked with lower values coming before higher values.",
+              "comment": "Note that rank does not necessarily follow the order in which the contacts are represented in the instance.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.telecom.rank",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "positiveInt"
+                }
+              ]
+            },
+            {
+              "id": "25",
+              "path": "Practitioner.telecom.period",
+              "short": "Time period when the contact point was/is in use",
+              "definition": "Time period when the contact point was/is in use.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.telecom.period",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "Period"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "N/A"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./useablePeriod[type=\"IVL<TS>\"]"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./StartDate and ./EndDate"
+                }
+              ]
+            },
+            {
+              "id": "26",
+              "path": "Practitioner.telecom",
+              "sliceName": "website",
+              "short": "A contact detail for the practitioner",
+              "definition": "A contact detail for the practitioner, e.g. a telephone number or an email address.",
+              "comment": "Person may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification.",
+              "requirements": "Need to know how to reach a practitioner.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "ContactPoint"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "PRT-15, STF-10, ROL-12"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./telecom"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./ContactPoints"
+                }
+              ]
+            },
+            {
+              "id": "27",
+              "path": "Practitioner.telecom.system",
+              "short": "phone | fax | email | pager | other",
+              "definition": "Telecommunications form for contact point - what communications system is required to make use of the contact.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.system",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "fixedCode": "other",
+              "condition": [
+                "cpt-2"
+              ],
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "description": "Telecommunications form for contact point",
+                "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-system"
+              },
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XTN.3"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./scheme"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./ContactPointType"
+                }
+              ]
+            },
+            {
+              "id": "28",
+              "path": "Practitioner.telecom.value",
+              "short": "The actual contact point details",
+              "definition": "The actual contact point details, in a form that is meaningful to the designated communication system (i.e. phone number or email address).",
+              "comment": "Additional text data such as phone extension numbers, or notes about use of the contact are sometimes included in the value.",
+              "requirements": "Need to support legacy numbers that are not in a tightly controlled format.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.value",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "mustSupport": true,
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XTN.1 (or XTN.12)"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./url"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./Value"
+                }
+              ]
+            },
+            {
+              "id": "29",
+              "path": "Practitioner.telecom.use",
+              "short": "home | work | temp | old | mobile - purpose of this contact point",
+              "definition": "Identifies the purpose for the contact point.",
+              "comment": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old.",
+              "requirements": "Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.telecom.use",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "fixedCode": "work",
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "description": "Use of contact point",
+                "valueSet": "http://hl7.org/fhir/ValueSet/contact-point-use"
+              },
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XTN.2 - but often indicated by field"
+                },
+                {
+                  "identity": "rim",
+                  "map": "unique(./use)"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./ContactPointPurpose"
+                }
+              ]
+            },
+            {
+              "id": "30",
+              "path": "Practitioner.address",
+              "short": "Where practitioner can be found/visited",
+              "definition": "The postal address where the practitioner can be found or visited or to which mail can be delivered.",
+              "requirements": "Need to keep track where the practitioner can found during work or for directing mail.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.address",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "Address"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "ORC-24, STF-11, ROL-11, PRT-14"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./addr"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./Addresses"
+                }
+              ]
+            },
+            {
+              "id": "31",
+              "path": "Practitioner.address.id",
+              "representation": [
+                "xmlAttr"
+              ],
+              "short": "xml:id (or equivalent in JSON)",
+              "definition": "unique id for the element within a resource (for internal references).",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.address.id",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "id"
+                }
+              ],
+              "mapping": [
+                {
+                  "identity": "rim",
+                  "map": "n/a"
+                }
+              ]
+            },
+            {
+              "id": "32",
+              "path": "Practitioner.address.use",
+              "short": "home | work | temp | old - purpose of this address",
+              "definition": "The purpose of this address.",
+              "comment": "This is labeled as \"Is Modifier\" because applications should not mistake a temporary or old address etc.for a current/permanent one. Applications can assume that an address is current unless it explicitly says that it is temporary or old.",
+              "requirements": "Allows an appropriate address to be chosen from a list of many.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.address.use",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "description": "The use of an address",
+                "valueSet": "http://hl7.org/fhir/ValueSet/address-use"
+              },
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XAD.7"
+                },
+                {
+                  "identity": "rim",
+                  "map": "unique(./use)"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./AddressPurpose"
+                }
+              ]
+            },
+            {
+              "id": "33",
+              "path": "Practitioner.address.type",
+              "short": "postal | physical | both",
+              "definition": "Distinguishes between physical addresses (those you can visit) and mailing addresses (e.g. PO Boxes and care-of addresses). Most addresses are both.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.address.type",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "description": "The type of an address (physical / postal)",
+                "valueSet": "http://hl7.org/fhir/ValueSet/address-type"
+              },
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XAD.18"
+                },
+                {
+                  "identity": "rim",
+                  "map": "unique(./use)"
+                },
+                {
+                  "identity": "vcard",
+                  "map": "address type parameter"
+                }
+              ]
+            },
+            {
+              "id": "34",
+              "path": "Practitioner.address.text",
+              "short": "Text representation of the address",
+              "definition": "A full text representation of the address.",
+              "comment": "Can provide both a text representation and parts.",
+              "requirements": "A renderable, unencoded form.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.address.text",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XAD.1 + XAD.2 + XAD.3 + XAD.4 + XAD.5 + XAD.6"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./formatted"
+                },
+                {
+                  "identity": "vcard",
+                  "map": "address label parameter"
+                }
+              ]
+            },
+            {
+              "id": "35",
+              "path": "Practitioner.address.district",
+              "short": "District name (aka county)",
+              "definition": "The name of the administrative area (county).",
+              "comment": "District is sometimes known as county, but in some regions 'county' in used in place of city (municipality), so county name should be conveyed in city instead.",
+              "alias": [
+                "County"
+              ],
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.address.district",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XAD.9"
+                },
+                {
+                  "identity": "rim",
+                  "map": "AD.part[parttype = CNT | CPA]"
+                }
+              ]
+            },
+            {
+              "id": "36",
+              "path": "Practitioner.address.period",
+              "short": "Time period when address was/is in use",
+              "definition": "Time period when address was/is in use.",
+              "requirements": "Allows addresses to be placed in historical context.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.address.period",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "Period"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "XAD.12 / XAD.13 + XAD.14"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./usablePeriod[type=\"IVL<TS>\"]"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./StartDate and ./EndDate"
+                }
+              ]
+            },
+            {
+              "id": "37",
+              "path": "Practitioner.gender",
+              "label": "Gender",
+              "short": "male | female | other | unknown",
+              "definition": "Administrative Gender - the gender that the person is considered to have for administration and record keeping purposes.",
+              "requirements": "Needed to address the person correctly.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.gender",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "isSummary": true,
+              "binding": {
+                "strength": "required",
+                "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender"
+              },
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "STF-5"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./administrativeGender"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./GenderCode"
+                }
+              ]
+            },
+            {
+              "id": "38",
+              "path": "Practitioner.photo",
+              "short": "Image of the person",
+              "definition": "Image of the person.",
+              "requirements": "Many EHR systems have the capability to capture an image of patients and personnel. Fits with newer social media usage too.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.photo",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "Attachment"
+                }
+              ],
+              "mapping": [
+                {
+                  "identity": "rim",
+                  "map": "./subjectOf/ObservationEvent[code=\"photo\"]/value"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./ImageURI (only supports the URI reference)"
+                }
+              ]
+            },
+            {
+              "id": "39",
+              "path": "Practitioner.qualification",
+              "slicing": {
+                "discriminator": [
+                  {
+                    "type": "value",
+                    "path": "code.coding.code"
+                  }
+                ],
+                "rules": "openAtEnd"
+              },
+              "short": "Qualifications obtained by training and certification",
+              "definition": "Qualifications obtained by training and certification.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "BackboneElement"
+                }
+              ],
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "CER?"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./indirectAuthority/QualifiedEntity[code < qualifiedEntity]"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./Qualifications"
+                }
+              ]
+            },
+            {
+              "id": "40",
+              "path": "Practitioner.qualification",
+              "sliceName": "certificate3-community",
+              "short": "Certificate 3 - Community",
+              "definition": "Qualifications obtained by training and certification.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "BackboneElement"
+                }
+              ],
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "CER?"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./indirectAuthority/QualifiedEntity[code < qualifiedEntity]"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./Qualifications"
+                }
+              ]
+            },
+            {
+              "id": "41",
+              "path": "Practitioner.qualification.code.coding.code",
+              "short": "Symbol in syntax defined by the system",
+              "definition": "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).",
+              "requirements": "Need to refer to a particular code in the system.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification.code.coding.code",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "fixedCode": "cert3-communitycare",
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.1"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./code"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code"
+                }
+              ]
+            },
+            {
+              "id": "42",
+              "path": "Practitioner.qualification.code.coding.display",
+              "short": "Representation defined by the system",
+              "definition": "A representation of the meaning of the code in the system, following the rules of the system.",
+              "requirements": "Need to be able to carry a human-readable meaning of the code for readers that do not know  the system.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification.code.coding.display",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "fixedString": "Certificate 3 - Community Care",
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.2 - but note this is not well followed"
+                },
+                {
+                  "identity": "rim",
+                  "map": "CV.displayName"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.display rdfs:subPropertyOf dt:CDCoding.displayName"
+                }
+              ]
+            },
+            {
+              "id": "43",
+              "path": "Practitioner.qualification.code.text",
+              "short": "Plain text representation of the concept",
+              "definition": "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.",
+              "comment": "Very often the text is the same as a displayName of one of the codings.",
+              "requirements": "The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification.code.text",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "fixedString": "Certificate 3 - Community Care",
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.9. But note many systems use C*E.2 for this"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./originalText[mediaType/code=\"text/plain\"]/data"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:CodeableConcept.text rdfs:subPropertyOf dt:CD.originalText"
+                }
+              ]
+            },
+            {
+              "id": "44",
+              "path": "Practitioner.qualification",
+              "sliceName": "certificate3-agedcare",
+              "short": "Qualifications obtained by training and certification",
+              "definition": "Qualifications obtained by training and certification.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "BackboneElement"
+                }
+              ],
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "CER?"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./indirectAuthority/QualifiedEntity[code < qualifiedEntity]"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./Qualifications"
+                }
+              ]
+            },
+            {
+              "id": "45",
+              "path": "Practitioner.qualification.code.coding.code",
+              "short": "Symbol in syntax defined by the system",
+              "definition": "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).",
+              "requirements": "Need to refer to a particular code in the system.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification.code.coding.code",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "fixedCode": "cert3-agedcare",
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.1"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./code"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code"
+                }
+              ]
+            },
+            {
+              "id": "46",
+              "path": "Practitioner.qualification.code.coding.display",
+              "short": "Representation defined by the system",
+              "definition": "A representation of the meaning of the code in the system, following the rules of the system.",
+              "requirements": "Need to be able to carry a human-readable meaning of the code for readers that do not know  the system.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification.code.coding.display",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "fixedString": "Certification 3 - Aged Care",
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.2 - but note this is not well followed"
+                },
+                {
+                  "identity": "rim",
+                  "map": "CV.displayName"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.display rdfs:subPropertyOf dt:CDCoding.displayName"
+                }
+              ]
+            },
+            {
+              "id": "47",
+              "path": "Practitioner.qualification",
+              "sliceName": "certificate3-clinical",
+              "short": "Qualifications obtained by training and certification",
+              "definition": "Qualifications obtained by training and certification.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "BackboneElement"
+                }
+              ],
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "CER?"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./indirectAuthority/QualifiedEntity[code < qualifiedEntity]"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./Qualifications"
+                }
+              ]
+            },
+            {
+              "id": "48",
+              "path": "Practitioner.qualification.code.coding.code",
+              "short": "Symbol in syntax defined by the system",
+              "definition": "A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination).",
+              "requirements": "Need to refer to a particular code in the system.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification.code.coding.code",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "code"
+                }
+              ],
+              "fixedCode": "cert3-clinical",
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.1"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./code"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code"
+                }
+              ]
+            },
+            {
+              "id": "49",
+              "path": "Practitioner.qualification.code.coding.display",
+              "short": "Representation defined by the system",
+              "definition": "A representation of the meaning of the code in the system, following the rules of the system.",
+              "requirements": "Need to be able to carry a human-readable meaning of the code for readers that do not know  the system.",
+              "min": 0,
+              "max": "1",
+              "base": {
+                "path": "Practitioner.qualification.code.coding.display",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "fixedString": "Certificate 3 clinical",
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.2 - but note this is not well followed"
+                },
+                {
+                  "identity": "rim",
+                  "map": "CV.displayName"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.display rdfs:subPropertyOf dt:CDCoding.displayName"
+                }
+              ]
+            },
+            {
+              "id": "50",
+              "path": "Practitioner.communication",
+              "label": "Languages",
+              "short": "A language the practitioner is able to use in patient communication",
+              "definition": "A language the practitioner is able to use in patient communication.",
+              "comment": "The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type.",
+              "requirements": "Knowing which language a practitioner speaks can help in facilitating communication with patients.",
+              "min": 0,
+              "max": "*",
+              "base": {
+                "path": "Practitioner.communication",
+                "min": 0,
+                "max": "*"
+              },
+              "type": [
+                {
+                  "code": "CodeableConcept"
+                }
+              ],
+              "binding": {
+                "strength": "required",
+                "description": "A human language.",
+                "valueSet": "http://tools.ietf.org/html/bcp47"
+              },
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "PID-15, NK1-20, LAN-2"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./languageCode"
+                },
+                {
+                  "identity": "servd",
+                  "map": "./Languages.LanguageSpokenCode"
+                }
+              ]
+            },
+            {
+              "id": "51",
+              "path": "Practitioner.communication.coding.system",
+              "short": "Identity of the terminology system",
+              "definition": "The identification of the code system that defines the meaning of the symbol in the code.",
+              "comment": "The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7's list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously.",
+              "requirements": "Need to be unambiguous about the source of the definition of the symbol.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.communication.coding.system",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "uri"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.3"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./codeSystem"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.system rdfs:subPropertyOf dt:CDCoding.codeSystem"
+                }
+              ]
+            },
+            {
+              "id": "52",
+              "path": "Practitioner.communication.coding.version",
+              "short": "Version of the system - if relevant",
+              "definition": "The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged.",
+              "comment": "Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.communication.coding.version",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.7"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./codeSystemVersion"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.version rdfs:subPropertyOf dt:CDCoding.codeSystemVersion"
+                }
+              ]
+            },
+            {
+              "id": "53",
+              "path": "Practitioner.communication.coding.userSelected",
+              "short": "If this coding was chosen directly by the user",
+              "definition": "Indicates that this coding was chosen by a user directly - i.e. off a pick list of available items (codes or displays).",
+              "comment": "Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations. There is some ambiguity about what exactly 'directly chosen' implies, and trading partner agreement may be needed to clarify the use of this element and its consequences more completely.",
+              "requirements": "This has been identified as a clinical safety criterium - that this exact system/code pair was chosen explicitly, rather than inferred by the system based on some rules or language processing.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.communication.coding.userSelected",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "boolean"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "Sometimes implied by being first"
+                },
+                {
+                  "identity": "rim",
+                  "map": "CD.codingRationale"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:Coding.userSelected fhir:mapsTo dt:CDCoding.codingRationale. fhir:Coding.userSelected fhir:hasMap fhir:Coding.userSelected.map. fhir:Coding.userSelected.map a fhir:Map;   fhir:target dt:CDCoding.codingRationale. fhir:Coding.userSelected\\#true a [     fhir:source \"true\";     fhir:target dt:CDCoding.codingRationale\\#O   ]"
+                }
+              ]
+            },
+            {
+              "id": "54",
+              "path": "Practitioner.communication.text",
+              "short": "Plain text representation of the concept",
+              "definition": "A human language representation of the concept as seen/selected/uttered by the user who entered the data and/or which represents the intended meaning of the user.",
+              "comment": "Very often the text is the same as a displayName of one of the codings.",
+              "requirements": "The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source.",
+              "min": 0,
+              "max": "0",
+              "base": {
+                "path": "Practitioner.communication.text",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "isSummary": true,
+              "mapping": [
+                {
+                  "identity": "v2",
+                  "map": "C*E.9. But note many systems use C*E.2 for this"
+                },
+                {
+                  "identity": "rim",
+                  "map": "./originalText[mediaType/code=\"text/plain\"]/data"
+                },
+                {
+                  "identity": "orim",
+                  "map": "fhir:CodeableConcept.text rdfs:subPropertyOf dt:CD.originalText"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "fullUrl": "https://localhost:5001/StructureDefinition/hcxdir-practitioner-appointment-required/_history/1",
+      "resource": {
+        "resourceType": "StructureDefinition",
+        "id": "hcxdir-practitioner-appointment-required",
+        "meta": {
+          "versionId": "1",
+          "lastUpdated": "2024-09-14T00:02:48.8911227+10:00"
+        },
+        "url": "http://healthconnex.com.au/hcxd/Practitioner/AppointmentRequired",
+        "version": "1",
+        "name": "hcxdir-practitioner-appointment-required",
+        "title": "hcxdir-practitioner-appointment-required",
+        "status": "draft",
+        "date": "2015-09-22T20:02:49+10:00",
+        "publisher": "Healthconnex",
+        "description": "Extension defined to check wether appointment is required for a practitioner",
+        "purpose": "The ability to add extensions in a structured way is what keeps FHIR resources simple",
+        "copyright": "Healthconnex",
+        "fhirVersion": "4.0.0",
+        "kind": "resource",
+        "abstract": false,
+        "context": [
+          {
+            "type": "element",
+            "expression": "Practitioner"
+          }
+        ],
+        "type": "Extension",
+        "baseDefinition": "http://hl7.org/fhir/StructureDefinition/Extension",
+        "derivation": "constraint",
+        "differential": {
+          "element": [
+            {
+              "id": "1",
+              "path": "Extension",
+              "definition": "Optional Extensions Element - found in all resources.",
+              "min": 0,
+              "max": "*",
+              "base": {
+                "path": "Extension",
+                "min": 0,
+                "max": "*"
+              },
+              "mapping": [
+                {
+                  "identity": "rim",
+                  "map": "N/A"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "path": "Extension.value[x]",
+              "label": "Appointment Required",
+              "short": "Value of Appointment Required",
+              "definition": "Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list).",
+              "min": 1,
+              "max": "1",
+              "base": {
+                "path": "Extension.value[x]",
+                "min": 0,
+                "max": "1"
+              },
+              "type": [
+                {
+                  "code": "string"
+                }
+              ],
+              "mapping": [
+                {
+                  "identity": "rim",
+                  "map": "N/A"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
