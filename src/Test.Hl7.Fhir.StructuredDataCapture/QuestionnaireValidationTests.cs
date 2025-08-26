@@ -389,7 +389,7 @@ namespace Hl7.Fhir.StructuredDataCapture.Test
 			Assert.AreEqual(OperationOutcome.IssueSeverity.Error, outcome.Issue[0].Severity);
 			Assert.AreEqual(OperationOutcome.IssueType.NotFound, outcome.Issue[0].Code);
 			Assert.AreEqual(QuestionnaireValidator.ErrorCodeSystem, outcome.Issue[0].Details.Coding[0].System);
-			Assert.AreEqual("invalidFhirpathExpressionTypes", outcome.Issue[0].Details.Coding[0].Code);
+			Assert.AreEqual("invalidFhirpathExpression", outcome.Issue[0].Details.Coding[0].Code);
 			// Also need to determine what location the report is on, the answer, or the item?
 			Assert.AreEqual("Questionnaire.extension[0].expression", outcome.Issue[0].Expression.First());
 		}
