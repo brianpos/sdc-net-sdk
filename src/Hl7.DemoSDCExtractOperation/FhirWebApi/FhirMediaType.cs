@@ -17,8 +17,8 @@ using System.Text;
 
 
 namespace Hl7.DemoFhirAzureFunctionApp
-{ 
-    public static class FhirMediaType
+{
+	public static class FhirMediaType
     {
         // TODO: This class can be merged into HL7.Fhir.ContentType
 
