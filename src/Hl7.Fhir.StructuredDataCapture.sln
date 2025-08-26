@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test.Hl7.Fhir.StructuredDataCapture", "Test.Hl7.Fhir.StructuredDataCapture\Test.Hl7.Fhir.StructuredDataCapture.csproj", "{476FF6CE-682E-401A-BFD5-6DE000504AD2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.DemoSDCExtractOperation", "Hl7.DemoSDCExtractOperation\Hl7.DemoSDCExtractOperation.csproj", "{78DBB9D6-9E23-47AD-B60B-2FB849253765}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.DemoSDCOperations", "Hl7.DemoSDCExtractOperation\Hl7.DemoSDCOperations.csproj", "{78DBB9D6-9E23-47AD-B60B-2FB849253765}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hl7.Fhir.R4.StructuredDataCapture", "Hl7.Fhir.R4.StructuredDataCapture\Hl7.Fhir.R4.StructuredDataCapture.csproj", "{7AC11A42-17AA-4FD7-9B30-C0C759412429}"
 EndProject

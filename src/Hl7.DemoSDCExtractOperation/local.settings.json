@@ -4,5 +4,11 @@
     "AzureWebJobsStorage": "UseDevelopmentStorage=true",
     "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
     "BaseURL": "https://hapi.fhir.org/baseR4"
+  },
+  "Host": {
+    "LocalHttpPort": 7071,
+    "CORS": "*",
+    "CORSCredentials": false,
+    "LocalhostOnly": false
   }
 }
