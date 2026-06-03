@@ -16,10 +16,10 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <None Include="local.settings.json" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.51.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.52.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.7" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="2.1.0" />
-		<PackageReference Include="Hl7.Fhir.Specification.Data.R4B" Version="5.13.2" />
+		<PackageReference Include="Hl7.Fhir.Specification.Data.R4B" Version="5.13.4" />
 	</ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hl7.Fhir.R4B.StructuredDataCapture\Hl7.Fhir.R4B.StructuredDataCapture.csproj" />

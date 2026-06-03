@@ -2,7 +2,7 @@
 
   <!-- SDC Solution-wide properties for NuGet packaging -->
   <PropertyGroup>
-		<Version>5.13.2-rc1</Version>
+		<Version>5.13.4-rc1</Version>
   </PropertyGroup>
 </Project>
 
